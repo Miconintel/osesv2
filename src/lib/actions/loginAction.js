@@ -47,7 +47,7 @@ const LoginAction = async (prevState, formData) => {
     };
     return toReturn;
   } catch (e) {
-    console.log(e.name);
+    console.log(e);
 
     if (e.message !== "NEXT_REDIRECT") {
       // sstop redirectiong from happening
@@ -74,6 +74,13 @@ const LoginAction = async (prevState, formData) => {
 
         return toReturn;
       }
+
+      toReturn = {
+        ...toReturn,
+        success: false,
+        message: "something went wrong ,we are fixing it",
+      };
+      return toReturn;
     }
   } finally {
     if (runFinally) {

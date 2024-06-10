@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth/auth";
 
 const Nav = async () => {
   const session = await auth();
-  console.log(session);
+
   return (
     <div className={styles.container}>
       <p className={styles.logo}>Logo</p>

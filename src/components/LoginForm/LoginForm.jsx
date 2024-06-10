@@ -25,7 +25,8 @@ const LoginForm = () => {
   // setting message when the temp message has a message,
   useEffect(() => {
     setTemp(state?.message);
-  }, [state?.message]);
+    console.log(state?.message);
+  }, [state]);
 
   return (
     <form className={styles.form} action={formAction} onClick={turnOffMessage}>
@@ -44,7 +45,10 @@ const LoginForm = () => {
       </div>
       <div>
         {/* <button type="submit">Login</button> */}
-        <ActionButton userAction="Login" className={styles.cursor}></ActionButton>
+        <ActionButton
+          userAction="Login"
+          className={styles.cursor}
+        ></ActionButton>
       </div>
       <Link href="/register" className={styles.redirect}>
         <span className={styles.tag}>Do not have account </span>
