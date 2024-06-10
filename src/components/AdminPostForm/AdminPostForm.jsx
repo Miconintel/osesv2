@@ -5,7 +5,6 @@ import ActionButton from "../ActionButton/ActionButton";
 import { useReducer } from "react";
 import { useRef } from "react";
 
-
 // unused
 // import { useFormState } from "react-dom";
 
@@ -201,13 +200,13 @@ const AdminPostForm = () => {
         body: formData,
       });
 
-      console.log(res);
+      // console.log(res);
       if (!res.ok) {
         throw new Error("something went wrong, request not sent");
       }
 
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
     } catch (e) {
       console.log(e);
       setError(e.message);

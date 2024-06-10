@@ -7,10 +7,28 @@
   z-index: 1;
   box-shadow: 1px 1px 1rem 0rem var(--color-text);
   background-color: var(--color-white-brand);
+  /* position: relative; */
 }
 
 .logo {
   font-size: var(--font-header);
   font-weight: bold;
   text-transform: uppercase;
+}
+
+@media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  /* .logo {
+    text-decoration: line-through;
+  } */
+
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
 }

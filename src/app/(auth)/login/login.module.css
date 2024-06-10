@@ -1,8 +1,33 @@
 .container {
   grid-column: cont-start/cont-end;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex; */
+
   min-height: 100vh;
   background-color: var(--color-primary);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+.imageContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.img {
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
 }

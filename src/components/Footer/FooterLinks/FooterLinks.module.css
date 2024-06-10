@@ -10,3 +10,16 @@
   color: var(--color-white-brand);
   font-size: var(--font-primary);
 }
+
+@media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
+}

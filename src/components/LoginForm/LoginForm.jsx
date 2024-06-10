@@ -25,7 +25,6 @@ const LoginForm = () => {
   // setting message when the temp message has a message,
   useEffect(() => {
     setTemp(state?.message);
-    console.log(state?.message);
   }, [state]);
 
   return (

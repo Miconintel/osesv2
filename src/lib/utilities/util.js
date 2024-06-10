@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connected = {};
 
-const url = process.env.DB.replace("<password>", process.env.DB_PASS);
+const url = process.env.DB?.replace("<password>", process.env.DB_PASS);
 // console.log(url);
 
 export const connectDb = async function () {

@@ -5,7 +5,7 @@ import AdminPostForm from "@/components/AdminPostForm/AdminPostForm";
 const admin = () => {
   return (
     <main className={classes.container}>
-      <AdminPosts />
+      {/* <AdminPosts /> */}
       <AdminPostForm />
     </main>
   );

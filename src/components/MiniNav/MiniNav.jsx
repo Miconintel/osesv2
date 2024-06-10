@@ -1,11 +1,11 @@
 import React from "react";
-import MiniNavLink from "./MiniNavLink/MiniNavLink";
+import MiniNavLinks from "./MiniNavLink/MiniNavLinks";
 import classes from "./MiniNav.module.css";
 
 const MiniNav = () => {
   return (
     <nav className={classes.nav}>
-      <MiniNavLink />
+      <MiniNavLinks />
     </nav>
   );
 };

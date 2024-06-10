@@ -1,0 +1,36 @@
+.drop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 50vh;
+  width: 100%;
+  background-color: var(--color-secondary);
+  transition: all 1s ease-in;
+  /* display: none; */
+}
+
+.effect {
+  opacity: 0;
+  /* visibility: hidden; */
+  top: -50%;
+}
+
+@media only screen and (min-width: 52em) {
+  /* … */
+  .drop {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
+}

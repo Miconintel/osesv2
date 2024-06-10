@@ -1,8 +1,12 @@
 .list {
+  margin-top: 4rem;
   list-style: none;
   display: flex;
   gap: 2.4rem;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  /* height: 100%; */
 }
 
 .list li {
@@ -23,20 +27,4 @@ a.action,
   cursor: pointer;
   border-radius: var(--radius-primary);
   font-size: var(--font-primary);
-}
-
-@media only screen and (max-width: 65em) {
-  /* … */
-}
-@media only screen and (max-width: 52em) {
-  .list {
-    display: none;
-  }
-  /* … */
-}
-@media only screen and (max-width: 32em) {
-  /* … */
-}
-@media only screen and (max-width: 22em) {
-  /* … */
 }

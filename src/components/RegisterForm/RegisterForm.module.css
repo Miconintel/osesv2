@@ -3,20 +3,20 @@
   padding: 3rem;
   box-shadow: 1rem 1rem 2rem 0 var(--color-text);
   border-radius: var(--radius-primary);
-  max-width: 30%;
-  flex: 0.5;
+  width: 55%;
 }
 
 .form > div {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 3rem;
   /* gap: 2rem; */
 }
 
-.form > div:not(:last-child) {
+/* .form > div:not(:last-child) {
   margin-bottom: 2rem;
-}
+} */
 
 .form label {
   font-size: 1.6rem;
@@ -71,4 +71,27 @@
   margin: 0 auto;
   text-align: center;
   margin-top: 2rem;
+}
+
+@media only screen and (max-width: 65em) {
+  /* … */
+  .form {
+    width: 90%;
+  }
+
+  .redirect {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 52em) {
+  /* … */
+  /* .form {
+    width: 90%;
+  } */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
 }

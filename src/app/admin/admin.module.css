@@ -1,8 +1,26 @@
 .container {
   grid-column: cont-start/cont-end;
   min-height: 100vh;
-  display: flex;
+  /* display: flex; */
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  justify-items: center;
+}
+
+@media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
 }

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import classes from "./MiniNavLink.module.css";
 import MiniNavItem from "./MiniNavItem/MiniNavItem";
+import classes from "./MiniNavLinks.module.css";
 
 const linkItem = [
   { id: 1, content: "SUMMARY" },
@@ -11,9 +11,8 @@ const linkItem = [
   { id: 4, content: "USERS" },
 ];
 
-const MiniNavLink = () => {
+const MiniNavLinks = () => {
   const [active, setActive] = useState(1);
-  console.log(active);
   const handleActive = (id) => {
     setActive(id);
   };
@@ -33,4 +32,4 @@ const MiniNavLink = () => {
   );
 };
 
-export default MiniNavLink;
+export default MiniNavLinks;

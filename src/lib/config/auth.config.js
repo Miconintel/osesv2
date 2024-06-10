@@ -12,7 +12,7 @@ export const authConfig = {
     async jwt({ token, user }) {
       // console.log(user);
       // console.log(token);
-      console.log(user);
+      // console.log(user);
       if (user) {
         token.id = user.id;
         token.role = user.role;
@@ -30,8 +30,8 @@ export const authConfig = {
     },
 
     authorized({ request, auth }) {
-      console.log(auth);
-      console.log(request);
+      // console.log(auth);
+      // console.log(request);
       const isLoggedIn = !!auth?.user;
       const isAdmin = auth?.role === "admin";
       //   confirming routes.
@@ -39,7 +39,7 @@ export const authConfig = {
       const loginUrl = request?.nextUrl.pathname.includes("/login");
 
       if (isLoggedIn && loginUrl) {
-        console.log("redirect");
+        // console.log("redirect");
         return NextResponse.redirect(new URL("/", request?.nextUrl));
       }
       if (!isLoggedIn && adminUrl) {

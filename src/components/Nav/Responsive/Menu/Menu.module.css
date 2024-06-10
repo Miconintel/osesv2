@@ -1,16 +1,18 @@
-.nav {
-  background-color: var(--color-background);
-  height: 100%;
+.iconContainer {
+  display: none;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 65em) {
   /* … */
 }
 @media only screen and (max-width: 52em) {
-  .nav {
-    grid-column: cont-start/cont-end;
+  .logo {
+    text-decoration: line-through;
   }
-
+  .iconContainer {
+    display: block;
+  }
   /* … */
 }
 @media only screen and (max-width: 32em) {

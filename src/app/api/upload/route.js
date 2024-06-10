@@ -6,6 +6,9 @@ import sharp from "sharp";
 import { Product } from "@/lib/model/Product";
 import { connectDb } from "@/lib/utilities/util";
 
+console.log(__dirname);
+console.log(process.cwd());
+
 export const POST = async (request, { params }) => {
   let fileName;
   try {
@@ -14,12 +17,12 @@ export const POST = async (request, { params }) => {
 
     const { name, category, description, image } = Object.fromEntries(formData);
 
-    console.log({
-      name,
-      category,
-      description,
-      image,
-    });
+    // console.log({
+    //   name,
+    //   category,
+    //   description,
+    //   image,
+    // });
 
     // files
     const handleFile = async (formData) => {
@@ -43,7 +46,7 @@ export const POST = async (request, { params }) => {
         .jpeg({ quality: 100 })
         .toFile(path.join(process.cwd(), `public/images/${fileName}`));
 
-      console.log(fileFormat);
+      // console.log(fileFormat);
     };
 
     handleFile(formData);
@@ -63,10 +66,11 @@ export const POST = async (request, { params }) => {
     };
 
     const data = await Product.create(document);
-    console.log(data);
+    // console.log(data);
 
     return NextResponse.json(
       {
+        data,
         message: "successfully uploaded",
       },
       { status: 200 }

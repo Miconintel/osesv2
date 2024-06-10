@@ -77,3 +77,23 @@ body {
   /* I set the min as the min-content and then declare a fix width as the max
    that way, as it gets smaller ,it keeps adjusting */
 }
+
+@media only screen and (max-width: 65em) {
+  html {
+    font-size: 60%;
+  }
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  /* .logo {
+    text-decoration: line-through;
+  } */
+
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
+}

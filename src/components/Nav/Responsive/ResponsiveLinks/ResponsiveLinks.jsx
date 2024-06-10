@@ -1,10 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./NavLinks.module.css";
-import { signOut } from "@/lib/auth/auth";
+import styles from "./ResponsiveLinks.module.css";
 import logoutAction from "@/lib/actions/logoutAction";
 
-const NavLinks = ({ session }) => {
+const ResponsiveLinks = ({ session }) => {
   const isAdmin = session?.role === "admin";
   return (
     <ul className={styles.list}>
@@ -25,13 +24,7 @@ const NavLinks = ({ session }) => {
             </li>
           )}
           <li>
-            <form
-              // action={async () => {
-              //   "use server";
-              //   await signOut();
-              // }}
-              action={logoutAction}
-            >
+            <form action={logoutAction}>
               <button className={styles.logout}>Logout</button>
             </form>
           </li>
@@ -47,4 +40,4 @@ const NavLinks = ({ session }) => {
   );
 };
 
-export default NavLinks;
+export default ResponsiveLinks;
