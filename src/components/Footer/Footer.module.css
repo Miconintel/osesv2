@@ -1,0 +1,12 @@
+.container {
+  height: 10vw;
+  background-color: var(--color-primary-darkest);
+  grid-column: full-start/full-end;
+  padding: 4rem 8rem;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 3rem;
+  font-weight: bold;
+}

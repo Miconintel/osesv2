@@ -1,0 +1,26 @@
+.list {
+  list-style: none;
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.list li {
+  font-size: var(--font-primary);
+}
+
+.list a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a.action,
+.logout {
+  padding: 1.2rem 1.2rem;
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-white-brand);
+  cursor: pointer;
+  border-radius: var(--radius-primary);
+  font-size: var(--font-primary);
+}

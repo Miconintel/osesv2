@@ -1,0 +1,10 @@
+.list {
+  list-style: none;
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 18rem));
+  justify-content: center;
+  /* note that the reason you can justify content and align content is because, grid items take the exact size of the 
+  grid track defined, that is the template columns and the template rows, however, when this items, have their sizes explicitly
+  defined, it overwrite the grid sizes */
+}

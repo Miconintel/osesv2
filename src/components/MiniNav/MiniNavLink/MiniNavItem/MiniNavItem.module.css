@@ -1,0 +1,17 @@
+.item {
+  width: 100%;
+}
+
+.button {
+  padding: 2rem 0rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+}
+
+button.active {
+  background-color: var(--color-primary);
+  color: var(--color-white-brand);
+}

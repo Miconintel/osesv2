@@ -1,0 +1,12 @@
+.list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.item a {
+  text-decoration: none;
+  color: var(--color-white-brand);
+  font-size: var(--font-primary);
+}

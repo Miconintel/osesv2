@@ -1,0 +1,87 @@
+.form {
+  background-color: var(--color-background-1);
+  padding: 3rem;
+  box-shadow: 1rem 1rem 2rem 0 var(--color-text);
+  border-radius: var(--radius-primary);
+  flex: 0.5;
+  max-width: 25%;
+}
+
+.form > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+/* .form > div:not(:last-of-type) {
+  margin-bottom: 2rem;
+} */
+
+/* last-child refers to the last child in the parent component, so for it to work, the div has to be the last child
+but last of it type refers to only the particular type of that element under the same parent, does not consideer other elenents
+*/
+
+.form label {
+  font-size: 1.6rem;
+  flex: 1;
+}
+
+.form input,
+.form textarea {
+  border: none;
+  background-color: var(--color-background-2);
+  padding: 2rem;
+  flex: 1;
+}
+
+.form input {
+  height: 4rem;
+}
+
+.form button {
+  background-color: var(--color-primary);
+  color: var(--color-white-brand);
+  padding: 1.2rem 1.6rem;
+  border: none;
+  font-size: var(--font-primary);
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.form button:disabled {
+  background-color: var(--color-background-2);
+  cursor: not-allowed;
+}
+
+.redirect {
+  font-size: 1.2rem;
+  padding: 0.4rem;
+  border-radius: 4rem;
+  color: var(--font-primary);
+  text-decoration: none;
+  display: block;
+  width: 80%;
+  border: 0.1px solid var(--color-secondary);
+  margin: 0 auto;
+  text-align: center;
+
+  /* line-height: 0; */
+  /* background-color: var(--color-background-2); */
+}
+
+.redirect > .tag {
+  color: var(--color-secondary);
+}
+
+.errMessage {
+  font-size: 1.2rem;
+  color: var(--color-secondary-dark);
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.cursor {
+  cursor: pointer;
+}

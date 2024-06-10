@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: full-start/full-end;
+  padding: 4rem 8rem;
+  z-index: 1;
+  box-shadow: 1px 1px 1rem 0rem var(--color-text);
+  background-color: var(--color-white-brand);
+}
+
+.logo {
+  font-size: var(--font-header);
+  font-weight: bold;
+  text-transform: uppercase;
+}
