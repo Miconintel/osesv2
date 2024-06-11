@@ -8,12 +8,16 @@
 }
 @media only screen and (max-width: 52em) {
   .nav {
-    grid-column: cont-start/cont-end;
+    grid-column: full-start/full-end;
   }
 
   /* … */
 }
 @media only screen and (max-width: 32em) {
+  .nav {
+    grid-column: full-start/full-end;
+  }
+
   /* … */
 }
 @media only screen and (max-width: 22em) {
