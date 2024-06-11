@@ -15,7 +15,7 @@ const reducerFunction = function (prevState, action) {
   // handle name
   const nameAction = (payloadf) => {
     // const { type, payload } = action;
-    console.log(payloadf);
+    // console.log(payloadf);
     returnedState = { ...returnedState, nameInput: payloadf };
     return returnedState;
   };
@@ -23,7 +23,7 @@ const reducerFunction = function (prevState, action) {
   // hadndle category
   const categoryAction = (payloadf) => {
     // const { type, payload } = action;
-    console.log(payloadf);
+    // console.log(payloadf);
     returnedState = { ...returnedState, categoryInput: payloadf };
     return returnedState;
   };
@@ -31,7 +31,7 @@ const reducerFunction = function (prevState, action) {
   // handle description
   const descriptionAction = (payloadf) => {
     // const { type, payload } = action;
-    console.log(payloadf);
+    // console.log(payloadf);
     returnedState = { ...returnedState, descriptionInput: payloadf };
     return returnedState;
   };
@@ -39,7 +39,7 @@ const reducerFunction = function (prevState, action) {
   // handle file
   const fileAction = (payloadf) => {
     // const { type, payload } = action;
-    console.log(payloadf);
+    // console.log(payloadf);
     returnedState = { ...returnedState, upload: payloadf };
     return returnedState;
   };
@@ -81,7 +81,7 @@ const AdminPostForm = () => {
   // state
 
   const [disabled, setDisabled] = useState(true);
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [state, action] = useReducer(reducerFunction, initialState);
   const { nameInput, categoryInput, descriptionInput, upload } = state;
   // const [nameCheck, setNameCheck] = useState(false);
@@ -94,7 +94,7 @@ const AdminPostForm = () => {
   //
   //
   useEffect(() => {
-    setError("");
+    setMessage("");
     const nameVal = nameInput.length > 0;
     const catVal = categoryInput.length > 0;
     // console.log({ nameVal, catVal });
@@ -115,7 +115,7 @@ const AdminPostForm = () => {
   const handleChangeInputName = (e) => {
     const target = e.target;
     const nameInputf = target.value;
-    console.log(nameInputf);
+    // console.log(nameInputf);
     const actionObject = { type: "name", payload: nameInputf };
     action(actionObject);
     nameRef.current.style.border = "none";
@@ -124,7 +124,7 @@ const AdminPostForm = () => {
   const handleChangeInputCategory = (e) => {
     const target = e.target;
     const categoryInputf = target.value;
-    console.log(categoryInputf);
+    // console.log(categoryInputf);
     const actionObject = { type: "cat", payload: categoryInputf };
     action(actionObject);
     categoryRef.current.style.border = "none";
@@ -135,7 +135,7 @@ const AdminPostForm = () => {
   const handleChangeInputDescription = (e) => {
     const target = e.target;
     const descriptionInputf = target.value;
-    console.log(descriptionInputf);
+    // console.log(descriptionInputf);
     const actionObject = { type: "desc", payload: descriptionInputf };
     action(actionObject);
   };
@@ -145,7 +145,7 @@ const AdminPostForm = () => {
   const handleChangeInputFile = (e) => {
     const target = e.target;
     const fileTarget = target.files[0];
-    console.log(fileTarget);
+    // console.log(fileTarget);
     const actionObject = { type: "file", payload: fileTarget };
     action(actionObject);
   };
@@ -206,10 +206,13 @@ const AdminPostForm = () => {
       }
 
       const data = await res.json();
+      if (data) {
+        setMessage("upload successful");
+      }
       // console.log(data);
     } catch (e) {
       console.log(e);
-      setError(e.message);
+      setMessage(e.message);
     }
   };
 
@@ -283,7 +286,16 @@ const AdminPostForm = () => {
         ></ActionButton>
       </div>
 
-      {error && <p className={styles.errMessage}>{error}</p>}
+      {message && (
+        <p
+          className={styles.errMessage}
+          style={{
+            color: message === "upload successful" && "green",
+          }}
+        >
+          {message}
+        </p>
+      )}
     </form>
   );
 };

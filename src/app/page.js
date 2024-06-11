@@ -10,14 +10,14 @@ import { useRef } from "react";
 export default function Home() {
   const [position, setPosition] = useState(200);
   const bodyRef = useRef(null);
-  console.log(bodyRef.current);
+  // console.log(bodyRef.current);
 
   // const [returnPosition, setChange] = useState(false);
 
   useEffect(() => {
     const target = document.querySelector("#main");
     const target2 = bodyRef.current;
-    console.log(target2);
+    // console.log(target2);
 
     const options = {
       root: null,
@@ -38,7 +38,7 @@ export default function Home() {
     observer.observe(target2);
 
     () => {
-      console.log("running before and after");
+      // console.log("running before and after");
       observer.unobserve(target2);
     };
   }, []);

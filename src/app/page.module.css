@@ -8,3 +8,19 @@
 /* .hide {
   transform: translate(0, 200px);
 } */
+@media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  .container {
+    padding: 4rem 0;
+  }
+
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
+}

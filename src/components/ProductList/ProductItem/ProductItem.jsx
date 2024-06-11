@@ -8,7 +8,12 @@ const ProductItem = ({ product }) => {
     <li className={styles.item}>
       <Link href="#">
         <div className={styles.imageContainer}>
-          <Image alt={name + category} src="/images/placeholder.jpg" fill />
+          <Image
+            alt={name + category}
+            src="/images/placeholder.jpg"
+            fill
+            className={styles.img}
+          />
           {promo && <span className={styles.promo}>{promo}% off</span>}
         </div>
         <div className={styles.description}>

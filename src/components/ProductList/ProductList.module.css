@@ -8,3 +8,19 @@
   grid track defined, that is the template columns and the template rows, however, when this items, have their sizes explicitly
   defined, it overwrite the grid sizes */
 }
+
+@media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  .list {
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 9rem));
+  }
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
+}

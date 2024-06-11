@@ -1,5 +1,5 @@
 import React from "react";
-import MiniNavLinks from "./MiniNavLink/MiniNavLinks";
+import MiniNavLinks from "./MiniNavLinks/MiniNavLinks";
 import classes from "./MiniNav.module.css";
 
 const MiniNav = () => {
