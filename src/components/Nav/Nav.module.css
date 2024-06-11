@@ -5,7 +5,7 @@
   grid-column: full-start/full-end;
   padding: 4rem 8rem;
   z-index: 1;
-  box-shadow: 1px 1px 1rem 0rem var(--color-text);
+  box-shadow: 1px 1px 1rem 0rem var(--color-text-2);
   background-color: var(--color-white-brand);
   /* position: relative; */
 }
@@ -20,9 +20,10 @@
   /* … */
 }
 @media only screen and (max-width: 52em) {
-  /* .logo {
-    text-decoration: line-through;
-  } */
+  .container {
+    box-shadow: 1px 1px 1rem 0rem var(--color-background-2);
+    padding: 2rem 4rem;
+  }
 
   /* … */
 }

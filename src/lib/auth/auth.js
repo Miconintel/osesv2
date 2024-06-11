@@ -105,7 +105,7 @@ export const myNextAuthOptions = {
 
       const { email } = user;
 
-      const checkUser = User.findOne({ email });
+      const checkUser = await User.findOne({ email });
 
       if (!checkUser) {
         console.log("no user");

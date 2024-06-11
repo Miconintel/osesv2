@@ -11,7 +11,6 @@ export default function Home() {
   const [position, setPosition] = useState(200);
   const bodyRef = useRef(null);
   // console.log(bodyRef.current);
-
   // const [returnPosition, setChange] = useState(false);
 
   useEffect(() => {
