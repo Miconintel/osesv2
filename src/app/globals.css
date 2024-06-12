@@ -69,6 +69,8 @@ body {
     )
     [cont-end right-margin-start] minmax(6rem, 1fr) [full-end];
 
+  grid-template-rows: [full-start] max-content [const-start] max-content[cont-end] max-content[full-end];
+
   background-color: var(--color-white-brand);
   position: relative;
   /* this relative postion is to contain the hero container which is an absolute element.
