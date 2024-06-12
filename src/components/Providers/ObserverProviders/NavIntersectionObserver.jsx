@@ -39,7 +39,7 @@ const NavIntersectionObserver = ({ children }) => {
           //   observer.unobserve(target);
         } else {
           // here it is intersecting
-          nav.style.position = "relative";
+          nav.style.position = "static";
           nav.style.boxShadow = "none";
           //   setFixed(false);
           //   observer.unobserve(target);

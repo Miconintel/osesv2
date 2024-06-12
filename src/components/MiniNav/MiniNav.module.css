@@ -4,22 +4,20 @@
 }
 
 @media only screen and (max-width: 65em) {
-  /* … */
+  /* landscape portrait */
 }
 @media only screen and (max-width: 52em) {
+  /* potrait tablet || landscape phone */
   .nav {
     grid-column: full-start/full-end;
   }
-
-  /* … */
 }
 @media only screen and (max-width: 32em) {
+  /* big phone screens */
   .nav {
     grid-column: full-start/full-end;
   }
-
-  /* … */
 }
 @media only screen and (max-width: 22em) {
-  /* … */
+  /* small phone screens */
 }

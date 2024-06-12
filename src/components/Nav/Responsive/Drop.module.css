@@ -2,7 +2,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  height: 75vh;
+  height: 50vh;
   width: 100%;
   background-color: var(--color-secondary);
   transition: all 1s ease-in;
@@ -10,8 +10,8 @@
 }
 
 .effect {
+  visibility: hidden;
   opacity: 0;
-  /* visibility: hidden; */
   top: -50%;
 }
 

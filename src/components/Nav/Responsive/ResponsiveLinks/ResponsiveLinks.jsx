@@ -58,8 +58,6 @@ const ResponsiveLinks = ({ session }) => {
     if (closest) {
       dispatch(onClose());
     }
-
-    // console.log(closest);
   };
 
   return (

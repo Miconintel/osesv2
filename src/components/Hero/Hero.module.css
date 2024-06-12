@@ -10,3 +10,23 @@
   object-fit: cover;
   /* uses the grid container as the relative parent  */
 }
+
+@media only screen and (max-width: 65em) {
+  /* landscape portrait */
+}
+@media only screen and (max-width: 52em) {
+  /* potrait tablet || landscape phone */
+  .nav {
+    grid-column: full-start/full-end;
+  }
+}
+@media only screen and (max-width: 32em) {
+  /* big phone screens */
+  .imgContainer {
+    min-height: 80vh;
+    height: 80vh;
+  }
+}
+@media only screen and (max-width: 22em) {
+  /* small phone screens */
+}

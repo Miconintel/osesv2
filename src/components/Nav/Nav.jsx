@@ -3,6 +3,7 @@ import NavLinks from "./NavLinks/NavLinks";
 import styles from "./Nav.module.css";
 import { auth } from "@/lib/auth/auth";
 import Drop from "./Responsive/Drop";
+import Logo from "../Logo/Logo";
 import Link from "next/link";
 import NavIntersectionObserver from "../Providers/ObserverProviders/NavIntersectionObserver";
 import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
@@ -12,13 +13,13 @@ import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
 
 const Nav = async () => {
   const session = await auth();
-  // const { state, actions } = useStyleSlice();
 
   return (
     <nav className={styles.container} id="nav">
-      <Link href="/" className={styles.logo}>
+      {/* <Link href="/" className={styles.logo}>
         Logo
-      </Link>
+      </Link> */}
+      <Logo />
       <NavLinks session={session} />
       <Drop session={session} />
     </nav>
