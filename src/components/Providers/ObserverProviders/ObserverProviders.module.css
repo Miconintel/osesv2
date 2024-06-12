@@ -1,0 +1,7 @@
+.container {
+  grid-column: full-start/full-end;
+  width: 100%;
+}
+.fixedNav {
+  position: fixed;
+}
