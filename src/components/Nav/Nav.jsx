@@ -16,9 +16,6 @@ const Nav = async () => {
 
   return (
     <nav className={styles.container} id="nav">
-      {/* <Link href="/" className={styles.logo}>
-        Logo
-      </Link> */}
       <Logo />
       <NavLinks session={session} />
       <Drop session={session} />

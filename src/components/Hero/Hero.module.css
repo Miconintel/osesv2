@@ -1,8 +1,8 @@
 .imgContainer {
   min-height: 100vh;
   height: 100vh;
-  position: relative;
   width: 100%;
+  position: relative;
   grid-column: full-start / full-end;
   /* the relative parent is the grid container too. */
 }

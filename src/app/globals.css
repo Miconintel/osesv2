@@ -56,8 +56,9 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Poppins, Roboto,
+    Poppins, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
   color: var(--color-primary);
 }
 .grid-container {
@@ -79,6 +80,11 @@ body {
   /* I set the min as the min-content and then declare a fix width as the max
    that way, as it gets smaller ,it keeps adjusting */
 }
+
+/* .children-container {
+  height: max-content;
+  grid-row: cont-start/cont-end;
+} */
 
 @media only screen and (max-width: 65em) {
   html {
