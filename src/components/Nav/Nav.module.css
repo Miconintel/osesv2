@@ -6,10 +6,11 @@
   grid-row: full-start/cont-start;
   padding: 4rem 8rem;
   z-index: 1;
-  box-shadow: 1px 1px 1rem 0rem var(--color-text-2);
+  /* box-shadow: 1px 1px 1rem 0rem var(--color-text-2); */
 
   background-color: var(--color-white-brand);
   width: 100%;
+  border-bottom: 1px solid var(--color-secondary-lightest);
   /* position: relative; */
 }
 
@@ -17,6 +18,11 @@
   font-size: var(--font-header);
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.sticky {
+  position: fixed;
+  box-shadow: 1px 1px 1rem 0rem var(--color-text-2);
 }
 
 @media only screen and (max-width: 65em) {

@@ -23,11 +23,12 @@ const emailValidation = z
 const LoginAction = async (prevState, formData) => {
   let runFinally = true;
   let toReturn = { ...prevState };
+  const { email, password } = Object.fromEntries(formData);
 
   try {
     // I had to do this to make sure I am returning a brand new object and not the previous object passed in
 
-    const { email, password } = Object.fromEntries(formData);
+    // const { email, password } = Object.fromEntries(formData);
     const emailCheck = emailValidation.safeParse({
       email: email,
     });
@@ -83,7 +84,7 @@ const LoginAction = async (prevState, formData) => {
       return toReturn;
     }
   } finally {
-    if (runFinally) {
+    if (runFinally && email && password) {
       redirect("/");
     }
   }

@@ -4,29 +4,31 @@
 // if the % is in, intersection is true, if it is not , intersection is false. and call back is trigerred each time
 // when the % mark is reached
 import React, { useRef, useEffect, useState } from "react";
-import { Fragment } from "react";
+// import { Fragment } from "react";
 import styles from "./ObserverProviders.module.css";
+import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
 
-const NavIntersectionObserver = ({ children }) => {
+const NavIntersectionObserver = ({ children, inStyles }) => {
+  const { actions, dispatch } = useStyleSlice();
+  const { onAddFixed, onRemoveFixed } = actions;
+  // console.log(state);
+
   const navRef = useRef(null);
-  const [fixed, setFixed] = useState(false);
 
   useEffect(() => {
     let myObserver;
     let myTarget;
-    // const nav = document.querySelector("#nav");
 
     const observeEvent = () => {
       const target = navRef.current;
-      myTarget = target;
       const nav = document.querySelector("#nav");
+      myTarget = target;
+
       //
       //
 
-      const navClientHeight = nav.getBoundingClientRect().height;
+      const navClientHeight = nav?.getBoundingClientRect().height;
       const halfHeroHeight = target.getBoundingClientRect().height / 3;
-      // console.log(halfHeroHeight);
-      // console.log(navClientHeight);
 
       //    options
       const observerOptions = {
@@ -38,29 +40,22 @@ const NavIntersectionObserver = ({ children }) => {
       // callback
       const observerCallback = (entry, observer) => {
         myObserver = observer;
-        // console.log(entry);
-        //
         const currentEntry = entry[0];
-        const intersecting = currentEntry.isIntersecting;
-        const confirmHomePage = currentEntry.rootBounds.x > 0;
-        // console.log(confirmHomePage);
-        // console.log(intersecting);
+        const intersecting = currentEntry?.isIntersecting;
+        const confirmHomePage = currentEntry?.rootBounds?.x > 0;
 
         if (!intersecting && confirmHomePage) {
-          // console.log("is not intersecting");
-          nav.style.position = "fixed";
-          nav.style.boxShadow = "1px 1px 1rem 0rem var(--color-text-2)";
-
-          //   setFixed(true);
-          //   observer.unobserve(target);
+          dispatch(onAddFixed());
+          // nav.style.position = "fixed";
+          // nav.style.boxShadow = "1px 1px 1rem 0rem var(--color-text-2)";
         } else {
           // here it is intersecting
-          // console.log("is intersecting");
-          nav.style.position = "static";
-          nav.style.boxShadow = "none";
-          //   setFixed(false);
-          //   observer.unobserve(target);
+          dispatch(onRemoveFixed());
+          // nav.style.position = "static";
+          // nav.style.boxShadow = "none";
         }
+
+        // you can make this a seperate if statement
       };
 
       //   obsever
@@ -76,13 +71,13 @@ const NavIntersectionObserver = ({ children }) => {
 
     return () => {
       // returning to static
-      nav.style.position = "static";
-      // nav.style.boxShadow = "1px 1px 1rem 0rem var(--color-text-2)";
+      console.log("it");
+      myObserver?.unobserve(myTarget);
     };
-  }, []);
+  }, [dispatch, onAddFixed, onRemoveFixed]);
 
   return (
-    <div className={styles.container} ref={navRef}>
+    <div className={`${styles.container}`} style={inStyles} ref={navRef}>
       {children}
     </div>
   );

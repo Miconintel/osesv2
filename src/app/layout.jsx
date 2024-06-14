@@ -3,6 +3,8 @@ import "./globals.css";
 import Nav from "@/components/Nav/Nav";
 import Footer from "@/components/Footer/Footer";
 import StoreProvider from "@/components/StoreProvider/StoreProvider";
+import ProviderSession from "@/components/Providers/ProviderSession/ProviderSession";
+import LoginProviders from "@/components/Providers/LoginProviders/LoginProviders";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +19,10 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <StoreProvider>
           <div className="grid-container">
-            <Nav />
+            <LoginProviders Component={Nav}>{/* <Nav /> */}</LoginProviders>
+
             {children}
-            <Footer />
+            <Footer name="uche" />
           </div>
         </StoreProvider>
       </body>

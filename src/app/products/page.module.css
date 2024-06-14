@@ -1,7 +1,8 @@
 .container {
-  grid-column: cont-start / cont-end;
+  /* grid-column: cont-start / cont-end;
   font-size: var(--font-primary);
-  padding: 12rem 0;
+  padding: 12rem 0; */
+  width: 100%;
 }
 
 @media only screen and (max-width: 65em) {
