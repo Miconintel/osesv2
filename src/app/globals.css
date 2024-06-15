@@ -72,7 +72,7 @@ body {
 
   grid-template-rows: [full-start] max-content [const-start] max-content[cont-end] max-content[full-end];
 
-  background-color: var(--color-white-brand);
+  background-color: var(--color-background);
   position: relative;
   /* this relative postion is to contain the hero container which is an absolute element.
   without it, the container can still stay inside the home page main, but this is semantically correct */

@@ -1,6 +1,6 @@
 .container {
   grid-column: cont-start/cont-end;
-  min-height: 100vh;
+  min-height: max-content;
   /* display: flex; */
 
   display: grid;

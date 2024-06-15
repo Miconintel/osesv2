@@ -12,8 +12,13 @@
 .effect {
   visibility: hidden;
   opacity: 0;
-  top: -50%;
+  top: -50rem;
+  /* top: -50%; */
+  /* removes percentage use because when nav is set to fixed the parent container becomes the grid container
+  causing the modal not to fully go in */
 }
+
+/* small screen first screen first */
 
 @media only screen and (min-width: 52em) {
   /* … */
@@ -21,6 +26,8 @@
     display: none;
   }
 }
+
+/* LARGE SCREEN FIRST */
 
 @media only screen and (max-width: 65em) {
   /* … */

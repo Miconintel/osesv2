@@ -15,11 +15,9 @@ import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
 
 const Nav = ({ session }) => {
   // const session = await auth();
-  console.log(session);
-  const { state, actions, dispatch } = useStyleSlice();
 
+  const { state, actions, dispatch } = useStyleSlice();
   const { fixed } = state;
-  console.log(fixed);
 
   return (
     <nav

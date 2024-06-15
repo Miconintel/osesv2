@@ -42,14 +42,16 @@ const NavIntersectionObserver = ({ children, inStyles }) => {
         myObserver = observer;
         const currentEntry = entry[0];
         const intersecting = currentEntry?.isIntersecting;
+        // no longer using confirm home page
         const confirmHomePage = currentEntry?.rootBounds?.x > 0;
 
-        if (!intersecting && confirmHomePage) {
+        if (!intersecting) {
+          // intersecting is false
           dispatch(onAddFixed());
           // nav.style.position = "fixed";
           // nav.style.boxShadow = "1px 1px 1rem 0rem var(--color-text-2)";
         } else {
-          // here it is intersecting
+          // intersecting is true
           dispatch(onRemoveFixed());
           // nav.style.position = "static";
           // nav.style.boxShadow = "none";
@@ -71,7 +73,6 @@ const NavIntersectionObserver = ({ children, inStyles }) => {
 
     return () => {
       // returning to static
-      console.log("it");
       myObserver?.unobserve(myTarget);
     };
   }, [dispatch, onAddFixed, onRemoveFixed]);

@@ -28,7 +28,7 @@ const Drop = ({ session }) => {
       <Menu open={open} onOpen={handleOnOpen} onClose={handleOnClose}></Menu> */}
 
       {/* //// */}
-      <div className={`${styles.drop} ${!open && styles.effect}`}>
+      <div className={`${styles.drop} ${!open ? styles.effect : ""}`}>
         <ResponsiveLinks session={session}></ResponsiveLinks>
       </div>
       <Menu></Menu>

@@ -10,8 +10,6 @@ import { useRef } from "react";
 export default function Home() {
   const [position, setPosition] = useState(200);
   const bodyRef = useRef(null);
-  // console.log(bodyRef.current);
-  // const [returnPosition, setChange] = useState(false);
 
   useEffect(() => {
     const target = document.querySelector("#main");
@@ -21,7 +19,7 @@ export default function Home() {
     const options = {
       root: null,
       rootMargin: "-2px",
-      threshold: 0.1,
+      threshold: 0,
     };
 
     const callBack = (entries, observer) => {
@@ -45,7 +43,6 @@ export default function Home() {
     <>
       <Hero />
       <main
-        // className={`${styles.container} ${!returnPosition && styles.hide}`}
         ref={bodyRef}
         className={styles.container}
         id="main"
