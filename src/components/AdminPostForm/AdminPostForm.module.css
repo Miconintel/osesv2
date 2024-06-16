@@ -1,7 +1,7 @@
 .form {
   background-color: var(--color-background-1);
   padding: 3rem;
-  box-shadow: 1rem 1rem 2rem 0 var(--color-text);
+  /* box-shadow: 1rem 1rem 2rem 0 var(--color-text); */
   border-radius: var(--radius-primary);
   width: 90%;
 }

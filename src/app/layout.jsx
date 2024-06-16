@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
         <StoreProvider>
           <div className="grid-container">
             <LoginProviders Component={Nav}>{/* <Nav /> */}</LoginProviders>
-
             {children}
             <Footer name="uche" />
           </div>

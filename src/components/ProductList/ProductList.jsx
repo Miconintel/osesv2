@@ -1,8 +1,10 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ProductItem from "./ProductItem/ProductItem";
 import styles from "./ProductList.module.css";
+import NavIntersectionObserver from "../Providers/ObserverProviders/NavIntersectionObserver";
 
 const products = [
   {
@@ -124,14 +126,25 @@ const products = [
   },
 ];
 const ProductList = () => {
+  const productRef = useRef(null);
   // create product map
   const productMap = products.map((product, i) => {
     // const { name, price, discountPrice } = product;
     return <ProductItem key={i} product={product} />;
   });
 
-  //   return jsx
+  // //   return jsx
   return <ul className={styles.list}>{productMap}</ul>;
+
+  //   return jsx
+
+  // return (
+  //   <NavIntersectionObserver threshold={0} theRef={productRef}>
+  //     <ul className={styles.list} ref={productRef}>
+  //       {productMap}
+  //     </ul>
+  //   </NavIntersectionObserver>
+  // );
 };
 
 export default ProductList;

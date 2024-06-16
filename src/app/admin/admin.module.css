@@ -1,5 +1,5 @@
 .container {
-  grid-column: cont-start/cont-end;
+  grid-column: col-start 2 / cont-end;
   min-height: max-content;
   /* display: flex; */
 
@@ -12,12 +12,17 @@
 }
 
 @media only screen and (max-width: 65em) {
+  .container {
+    grid-column: cont-start / cont-end;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   /* … */
 }
 @media only screen and (max-width: 52em) {
-  .container {
+  /* .container {
     grid-template-columns: repeat(1, 1fr);
-  }
+  } */
   /* … */
 }
 @media only screen and (max-width: 32em) {

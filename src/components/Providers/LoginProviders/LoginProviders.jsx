@@ -1,9 +1,8 @@
 import React, { Fragment } from "react";
 import { auth } from "@/lib/auth/auth";
 
-const LoginProviders = async ({ Component, prop }) => {
+const LoginProviders = async ({ Component }) => {
   const session = await auth();
-  console.log(prop);
 
   return (
     <Fragment>

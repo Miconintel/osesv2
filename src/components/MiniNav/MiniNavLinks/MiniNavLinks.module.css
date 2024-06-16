@@ -7,12 +7,12 @@
 }
 
 @media only screen and (max-width: 65em) {
-  /* … */
-}
-@media only screen and (max-width: 52em) {
   .list {
     flex-direction: row;
   }
+  /* … */
+}
+@media only screen and (max-width: 52em) {
   /* … */
 }
 @media only screen and (max-width: 32em) {
