@@ -9,7 +9,7 @@ export const getProducts = async () => {
     //
     const product = await Product.find({});
     revalidatePath("/products");
-    console.log(product);
+    // console.log(product);
     return product;
   } catch (err) {
     console.log(err);

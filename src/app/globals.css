@@ -64,11 +64,11 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns:
-    [full-start] minmax(6rem, 1fr) [left-margin-end cont-start] repeat(
+    [full-start] minmax(4rem, 1fr) [left-margin-end cont-start] repeat(
       auto-fit,
       [col-start] minmax(min-content, 16rem) [col-end]
     )
-    [cont-end right-margin-start] minmax(6rem, 1fr) [full-end];
+    [cont-end right-margin-start] minmax(4rem, 1fr) [full-end];
 
   /* grid-template-rows: [full-start] max-content [const-start] max-content[cont-end] max-content[full-end]; */
 
@@ -89,27 +89,24 @@ body {
 } */
 
 @media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  /* … */
+}
+@media only screen and (max-width: 32em) {
   html {
     font-size: 60%;
   }
   .grid-container {
     grid-template-columns:
-      [full-start] minmax(3rem, 1fr) [left-margin-end cont-start] repeat(
+      [full-start] minmax(2rem, 1fr) [left-margin-end cont-start] repeat(
         auto-fit,
         minmax(min-content, 16rem)
       )
-      [cont-end right-margin-start] minmax(3rem, 1fr) [full-end];
+      [cont-end right-margin-start] minmax(2rem, 1fr) [full-end];
   }
-  /* … */
-}
-@media only screen and (max-width: 52em) {
-  /* .logo {
-    text-decoration: line-through;
-  } */
 
-  /* … */
-}
-@media only screen and (max-width: 32em) {
   /* … */
 }
 @media only screen and (max-width: 22em) {

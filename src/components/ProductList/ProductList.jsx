@@ -1,8 +1,8 @@
 import React from "react";
 import ProductItem from "./ProductItem/ProductItem";
 import { getProducts } from "@/lib/data/productData";
-import { unstable_noStore as noStore } from "next/cache";
 import styles from "./ProductList.module.css";
+import { unstable_noStore as noStore } from "next/cache";
 
 //
 //
@@ -131,11 +131,12 @@ const products = [
 //
 //
 const ProductList = async () => {
-  // noStore();
+  noStore();
   const productLoad = await getProducts();
   // console.log(productLoad);
   // create product map
-  const productMap = productLoad.map((product, i) => {
+  const productMap = productLoad?.map((product, i) => {
+    console.log(product);
     return <ProductItem key={i} product={product} />;
   });
 

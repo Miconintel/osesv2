@@ -14,7 +14,7 @@
 }
 @media only screen and (max-width: 52em) {
   .list {
-    grid-template-columns: repeat(auto-fit, minmax(min-content, 9rem));
+    grid-template-columns: repeat(3, minmax(min-content, 1fr));
   }
   /* … */
 }

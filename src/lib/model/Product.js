@@ -68,7 +68,7 @@ const productSchema = mongoose.Schema(schemaOptions, {
 // virtuals
 
 productSchema.virtual("promo").get(function () {
-  console.log(this.discountPrice);
+  // console.log(this.discountPrice);
   if (!this.discountPrice > 0) return 0;
   const percentOffPrice = this.price - this.discountPrice;
   const percentageOff = Math.ceil((percentOffPrice * 100) / this.price);

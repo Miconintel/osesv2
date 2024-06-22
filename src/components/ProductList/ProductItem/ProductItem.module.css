@@ -49,12 +49,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
 }
 
 .product span {
   font-size: 1.4rem;
   display: flex;
   align-items: center;
+  color: var(--color-secondary);
+  gap: 0.4rem;
 }
 
 .crossed {

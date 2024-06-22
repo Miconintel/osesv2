@@ -18,7 +18,7 @@
   text-decoration: none;
 }
 
-a.action,
+/* a.action,
 .logout {
   padding: 1.2rem 1.2rem;
   border: none;
@@ -27,4 +27,11 @@ a.action,
   cursor: pointer;
   border-radius: var(--radius-primary);
   font-size: var(--font-primary);
+} */
+
+.logout {
+  background: none;
+  color: currentColor;
+  border: none;
+  font-size: inherit;
 }

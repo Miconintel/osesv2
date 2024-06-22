@@ -1,16 +1,12 @@
-// "use client";
-
 import Image from "next/image";
 import styles from "./page.module.css";
 import Hero from "@/components/Hero/Hero";
 import ProductList from "@/components/ProductList/ProductList";
-import { unstable_noStore as noStore } from "next/cache";
+
 // import { useEffect, useState } from "react";
 // import { useRef } from "react";
 
 export default function Home() {
-  noStore();
-  const position = 0;
   // const [position, setPosition] = useState(200);
   // const bodyRef = useRef(null);
 
@@ -50,9 +46,9 @@ export default function Home() {
         // ref={bodyRef}
         className={styles.container}
         id="main"
-        style={{
-          transform: `translate(0,${position}px)`,
-        }}
+        // style={{
+        //   transform: `translate(0,${position}px)`,
+        // }}
       >
         <ProductList />
       </main>
