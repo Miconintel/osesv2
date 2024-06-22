@@ -7,22 +7,31 @@
 
 .list li {
   font-size: var(--font-primary);
+  color: var(--color-primary);
 }
 
 .list a {
-  color: var(--color-primary);
+  /* color: var(--color-primary); */
   text-decoration: none;
+  color: inherit;
 }
 
-a.action,
-.logout {
+a.action {
   padding: 1.2rem 1.2rem;
   border: none;
   background-color: var(--color-primary);
   color: var(--color-white-brand);
   cursor: pointer;
   border-radius: var(--radius-primary);
-  font-size: var(--font-primary);
+  /* font-size: var(--font-primary); */
+}
+
+.logout {
+  border: none;
+  color: inherit;
+  background: none;
+  font-size: inherit;
+  /* font-size: var(--font-primary); */
 }
 
 @media only screen and (max-width: 65em) {

@@ -1,12 +1,20 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, act } from "react";
 import styles from "./AdminPostForm.module.css";
 import ActionButton from "../ActionButton/ActionButton";
 import { useReducer } from "react";
 import { useRef } from "react";
 
-// unused
-// import { useFormState } from "react-dom";
+// initialStat
+
+const initialState = {
+  nameInput: "",
+  categoryInput: "",
+  descriptionInput: "",
+  priceInput: "",
+  discountInput: "",
+  upload: "",
+};
 
 const reducerFunction = function (prevState, action) {
   let returnedState = { ...prevState };
@@ -25,6 +33,22 @@ const reducerFunction = function (prevState, action) {
     // const { type, payload } = action;
     // console.log(payloadf);
     returnedState = { ...returnedState, categoryInput: payloadf };
+    return returnedState;
+  };
+
+  // hadndle price
+  const priceAction = (payloadf) => {
+    // const { type, payload } = action;
+    // console.log(payloadf);
+    returnedState = { ...returnedState, priceInput: payloadf };
+    return returnedState;
+  };
+
+  // hadndle price
+  const discountAction = (payloadf) => {
+    // const { type, payload } = action;
+    // console.log(payloadf);
+    returnedState = { ...returnedState, discountInput: payloadf };
     return returnedState;
   };
 
@@ -54,21 +78,18 @@ const reducerFunction = function (prevState, action) {
       return descriptionAction(payload);
     case "file":
       return fileAction(payload);
-    // default:
-    //   return returnedState;
+    case "price":
+      return priceAction(payload);
+    case "discount":
+      return discountAction(payload);
+    case "clear":
+      return { ...initialState };
   }
 
   // here we are using switch statement to return directly from the function/
   // so it returns whatever file action returns
 
   return returnedState;
-};
-
-const initialState = {
-  nameInput: "",
-  categoryInput: "",
-  descriptionInput: "",
-  upload: "",
 };
 
 //
@@ -81,14 +102,25 @@ const AdminPostForm = () => {
   // state
 
   const [disabled, setDisabled] = useState(true);
+  const [discountSelect, setDiscountSelect] = useState("NO");
   const [message, setMessage] = useState("");
+
+  // use reducer destructure
   const [state, action] = useReducer(reducerFunction, initialState);
-  const { nameInput, categoryInput, descriptionInput, upload } = state;
+  const {
+    nameInput,
+    categoryInput,
+    descriptionInput,
+    upload,
+    priceInput,
+    discountInput,
+  } = state;
   // const [nameCheck, setNameCheck] = useState(false);
 
   // refs
   const nameRef = useRef(null);
   const categoryRef = useRef(null);
+  const priceRef = useRef(null);
 
   // effects
   //
@@ -97,13 +129,15 @@ const AdminPostForm = () => {
     setMessage("");
     const nameVal = nameInput.length > 0;
     const catVal = categoryInput.length > 0;
+    const priceVal = priceInput > 0;
     // console.log({ nameVal, catVal });
-    if (nameVal && catVal) {
+
+    if (nameVal && catVal && priceVal) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
-  }, [nameInput, categoryInput]);
+  }, [nameInput, categoryInput, priceInput]);
 
   // console.log({ nameInput, categoryInput, descriptionInput, upload });
 
@@ -130,6 +164,37 @@ const AdminPostForm = () => {
     categoryRef.current.style.border = "none";
   };
 
+  // handle price
+  const handleChangeInputPrice = (e) => {
+    const target = e.target;
+
+    const notANumber = isNaN(target.value);
+    if (notANumber) {
+      return action({ type: "price", payload: "" });
+    }
+
+    // keep working with target
+    const priceInputf = Number(target.value);
+    const actionObject = { type: "price", payload: priceInputf };
+    action(actionObject);
+    priceRef.current.style.border = "none";
+  };
+
+  // handle discount
+  const handleChangeInputDiscount = (e) => {
+    const target = e.target;
+
+    const notANumber = isNaN(target.value);
+    if (notANumber) {
+      return action({ type: "discount", payload: "" });
+    }
+    // keep working
+    const discountInputf = Number(target.value);
+    const actionObject = { type: "discount", payload: discountInputf };
+    action(actionObject);
+    // categoryRef.current.style.border = "none";
+  };
+
   // handle description
 
   const handleChangeInputDescription = (e) => {
@@ -145,17 +210,18 @@ const AdminPostForm = () => {
   const handleChangeInputFile = (e) => {
     const target = e.target;
     const fileTarget = target.files[0];
-    // console.log(fileTarget);
+    // const reader = new FileReader();
+    // reader.onload = (evt) => {
+    //   console.log(evt.target.result);
+    // };
+    // reader.readAsArrayBuffer(fileTarget);
+    const blob = fileTarget.arrayBuffer();
+
+    console.log(fileTarget);
     const actionObject = { type: "file", payload: fileTarget };
+    // const actionObject = { type: "file", payload: blob };
     action(actionObject);
   };
-
-  // for a single state,
-  // const handleChangeInputFile = (e) => {
-  //   const target = e.target;
-  //   const fileTarget = target.files[0];
-  //   setInputState(fileTarget);
-  // };
 
   // handle focus checks
   //
@@ -180,6 +246,14 @@ const AdminPostForm = () => {
     }
   };
 
+  const handlePriceBlur = () => {
+    const element = priceRef.current;
+    if (priceInput.length === 0) {
+      element.style.border = "solid 1px red";
+      // setNameCheck(true);
+    }
+  };
+
   // handle submit
   //
   //
@@ -187,6 +261,7 @@ const AdminPostForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    action({ type: "clear", payload: null });
 
     try {
       const formData = new FormData();
@@ -194,6 +269,10 @@ const AdminPostForm = () => {
       formData.append("name", nameInput);
       formData.append("category", categoryInput);
       formData.append("description", descriptionInput);
+      formData.append("price", priceInput);
+      formData.append("discount", discountInput);
+
+      console.log(formData.get("image"));
 
       const res = await fetch("/api/upload", {
         method: "POST",
@@ -216,6 +295,8 @@ const AdminPostForm = () => {
     }
   };
 
+  // jsx rerturn
+
   return (
     <form
       className={styles.form}
@@ -224,6 +305,7 @@ const AdminPostForm = () => {
     >
       <div>
         <input
+          value={nameInput}
           type="text"
           placeholder="PRODUCT NAME"
           id="product-name"
@@ -238,6 +320,7 @@ const AdminPostForm = () => {
       </div>
       <div>
         <input
+          value={categoryInput}
           type="text"
           placeholder="CATEGORY"
           id="product-category"
@@ -248,19 +331,58 @@ const AdminPostForm = () => {
         />
       </div>
       <div>
+        <input
+          value={priceInput}
+          type="text"
+          placeholder="PRICE"
+          id="product-price"
+          name="price"
+          onChange={handleChangeInputPrice}
+          onBlur={handlePriceBlur}
+          ref={priceRef}
+        />
+      </div>
+      <div className={styles.discount}>
+        <label>PROMO:</label>
+        <select
+          value={discountSelect}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setDiscountSelect(e.target.value);
+          }}
+        >
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+        </select>
+        {discountSelect === "YES" && (
+          <input
+            value={discountInput}
+            type="text"
+            placeholder="DISCOUNT PRICE"
+            id="product-discount-price"
+            name="discount-price"
+            onChange={handleChangeInputDiscount}
+            // onBlur={handleCategoryBlur}
+            // ref={categoryRef}
+          />
+        )}
+      </div>
+      <div>
         <textarea
+          value={descriptionInput}
           type="text"
           placeholder="description"
           id="description"
           name="description"
           maxLength={200}
-          minLength={48}
+          minLength={2}
           rows={5}
           onChange={handleChangeInputDescription}
         ></textarea>
       </div>
       <div>
         <input
+          // value={upload}
           accept="image/*"
           type="file"
           onChange={handleChangeInputFile}
@@ -268,16 +390,7 @@ const AdminPostForm = () => {
           id="coverImage"
         />
       </div>
-      {/* <div>
-        <input
-          type="file"
-          onChange={handleChangeInput}
-          name="photos"
-          id="photos"
-          multiple
-          placeholder="select other images"
-        />
-      </div> */}
+
       <div>
         <ActionButton
           userAction="upload"

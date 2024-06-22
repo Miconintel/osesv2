@@ -2,6 +2,8 @@
   background-color: var(--color-background);
   border-radius: 0.4rem;
   transition: all 0.4s;
+  overflow: hidden;
+  border: 1px solid var(--color-secondary-lightest);
 }
 
 .item:hover {

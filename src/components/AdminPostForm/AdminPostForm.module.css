@@ -9,8 +9,10 @@
 .form > div {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   margin-bottom: 3rem;
+  gap: 1.2rem;
+  flex-wrap: wrap;
 }
 
 /* .form > div:not(:last-of-type) {
@@ -22,8 +24,16 @@ but last of it type refers to only the particular type of that element under the
 */
 
 .form label {
-  font-size: 1.6rem;
-  flex: 1;
+  font-size: 1.4rem;
+  flex: 0.2;
+  font-weight: bold;
+}
+
+.discount select {
+  padding: 1rem;
+  color: inherit;
+  border: none;
+  font-weight: bold;
 }
 
 .form input,

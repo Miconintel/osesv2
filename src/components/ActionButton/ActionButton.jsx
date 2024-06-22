@@ -8,7 +8,7 @@ const ActionButton = ({ userAction, className, disable }) => {
   const { pending } = data;
 
   return (
-    <button type="submit" disabled={disable || pending} className={className}>
+    <button type="submit" disabled={pending || disable} className={className}>
       {pending ? "loading..." : userAction}
     </button>
   );

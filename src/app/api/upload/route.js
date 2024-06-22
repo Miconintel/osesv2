@@ -5,9 +5,10 @@ import { NextResponse } from "next/server";
 import sharp from "sharp";
 import { Product } from "@/lib/model/Product";
 import { connectDb } from "@/lib/utilities/util";
+import { Blob } from "buffer";
 
-console.log(__dirname);
-console.log(process.cwd());
+// console.log(__dirname);
+// console.log(process.cwd());
 
 export const POST = async (request, { params }) => {
   let fileName;
@@ -15,7 +16,8 @@ export const POST = async (request, { params }) => {
     const formData = await request.formData();
     // texts
 
-    const { name, category, description, image } = Object.fromEntries(formData);
+    const { name, category, description, image, price, discount } =
+      Object.fromEntries(formData);
 
     // console.log({
     //   name,
@@ -25,31 +27,40 @@ export const POST = async (request, { params }) => {
     // });
 
     // files
-    const handleFile = async (formData) => {
-      const file = formData.get("image");
-      if (!file) return;
-      const fileArrayBuffer = await file.arrayBuffer();
+    const handleFile = async (image) => {
+      // const file = formData.get("image");
+      // console.log(image);
+
+      if (!image) return;
+
+      const fileArrayBuffer = await image.arrayBuffer();
       const fileBuffer = Buffer.from(fileArrayBuffer);
+      console.log("running");
 
       // writefile
       // console.log(__dirname);
       // console.log(process.cwd());
-      fileName = file.name.replaceAll(" ", "_");
+      const theName = image.name.replaceAll(" ", "_");
 
       const fileFormat = await sharp(fileBuffer)
-        .resize(200, 300, {
-          width: 200,
-          height: 200,
-          fit: "contain",
+        .resize(300, 300, {
+          width: 300,
+          height: 300,
+          fit: "cover",
         })
         .toFormat("jpeg")
         .jpeg({ quality: 100 })
-        .toFile(path.join(process.cwd(), `public/images/${fileName}`));
+        .toFile(path.join(process.cwd(), `public/images/${theName}`));
 
-      // console.log(fileFormat);
+      return theName;
     };
 
-    handleFile(formData);
+    fileName = await handleFile(image);
+
+    // handling numbwes
+    const priceNumber = Number(price);
+    const discountNumber = Number(discount);
+    // fileName = await handleFile(image);
 
     //
     //
@@ -62,6 +73,8 @@ export const POST = async (request, { params }) => {
       name,
       category,
       description,
+      price: priceNumber,
+      discountPrice: discountNumber || null,
       coverImage: fileName || null,
     };
 
@@ -70,7 +83,7 @@ export const POST = async (request, { params }) => {
 
     return NextResponse.json(
       {
-        data,
+        // data,
         message: "successfully uploaded",
       },
       { status: 200 }

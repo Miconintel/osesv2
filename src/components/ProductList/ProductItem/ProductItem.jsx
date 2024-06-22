@@ -3,14 +3,15 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./ProductItem.module.css";
 const ProductItem = ({ product }) => {
-  const { name, discountPrice, price, category, promo, rating } = product;
+  const { name, discountPrice, price, category, promo, rating, coverImage } =
+    product;
   return (
     <li className={styles.item}>
       <Link href="#">
         <div className={styles.imageContainer}>
           <Image
             alt={name + category}
-            src="/images/placeholder.jpg"
+            src={coverImage ? `/images/${coverImage}` : "/placeholder.jpg"}
             fill
             className={styles.img}
           />

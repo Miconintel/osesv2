@@ -14,9 +14,32 @@ const schemaOptions = {
   description: {
     type: String,
   },
+  price: {
+    type: Number,
+    default: 2.0,
+  },
+  discountPrice: {
+    type: Number,
+    set: (value) => {
+      // console.log(value);
+      if (value === null) {
+        return 0;
+      }
+
+      return value;
+    },
+  },
   coverImage: {
     type: String,
-    default: "placeholder.jpg",
+    set: (value) => {
+      // console.log(value);
+      if (value === null) {
+        return "placeholder.jpg";
+      }
+
+      return value;
+    },
+    // default: "placeholder.jpg",
   },
   images: {
     type: [String],
@@ -32,6 +55,8 @@ const schemaOptions = {
     type: Number,
     default: 0,
   },
+
+  slug: String,
 };
 
 // creating schema
@@ -40,10 +65,37 @@ const productSchema = mongoose.Schema(schemaOptions, {
   toObject: { virtuals: true },
 });
 
+// virtuals
+
+productSchema.virtual("promo").get(function () {
+  console.log(this.discountPrice);
+  if (!this.discountPrice > 0) return 0;
+  const percentOffPrice = this.price - this.discountPrice;
+  const percentageOff = Math.ceil((percentOffPrice * 100) / this.price);
+  return percentageOff;
+});
 // schema midllewares
 
-productSchema.pre("save", async (next, doc) => {
-  console.log(doc);
+productSchema.pre("save", async function (next, options) {
+  // because I am accepting next I have to call it, else, I can choose not to accept it in async function and not
+  // call it.
+
+  this.slug = this.name + "-" + this.category.toLowerCase();
+  next();
+});
+
+// productSchema.post("save", async function (doc, next) {
+//   next();
+// });
+
+productSchema.pre("find", function () {
+  console.log("i pre finds");
+  // console.log(doc);
+});
+
+productSchema.post("find", async function () {
+  console.log("i post fiddnd");
+  // console.log(doc);
 });
 
 // creating model
