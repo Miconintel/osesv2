@@ -136,7 +136,6 @@ const ProductList = async () => {
   // console.log(productLoad);
   // create product map
   const productMap = productLoad?.map((product, i) => {
-    console.log(product);
     return <ProductItem key={i} product={product} />;
   });
 

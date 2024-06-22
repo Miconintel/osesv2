@@ -100,11 +100,11 @@ body {
   }
   .grid-container {
     grid-template-columns:
-      [full-start] minmax(2rem, 1fr) [left-margin-end cont-start] repeat(
+      [full-start] minmax(2.4rem, 1fr) [left-margin-end cont-start] repeat(
         auto-fit,
         minmax(min-content, 16rem)
       )
-      [cont-end right-margin-start] minmax(2rem, 1fr) [full-end];
+      [cont-end right-margin-start] minmax(2.4rem, 1fr) [full-end];
   }
 
   /* … */

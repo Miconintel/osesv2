@@ -2,7 +2,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  height: 50vh;
+  height: 75vh;
   width: 100%;
   background-color: var(--color-secondary);
   transition: all 1s ease-in;
@@ -36,6 +36,9 @@
   /* … */
 }
 @media only screen and (max-width: 32em) {
+  .drop {
+    height: 50vh;
+  }
   /* … */
 }
 @media only screen and (max-width: 22em) {
