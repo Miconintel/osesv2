@@ -9,10 +9,11 @@
 .form > div {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   margin-bottom: 3rem;
   gap: 1.2rem;
   flex-wrap: wrap;
+  overflow: hidden;
+  /* overflow this is important to check the file upload input container  */
 }
 
 /* .form > div:not(:last-of-type) {
@@ -42,6 +43,12 @@ but last of it type refers to only the particular type of that element under the
   background-color: var(--color-background-2);
   padding: 2rem;
   flex: 1;
+}
+
+input.upload {
+  font-size: 1.2rem;
+  color: inherit;
+  /* width: 0.5rem; */
 }
 
 .form input {
