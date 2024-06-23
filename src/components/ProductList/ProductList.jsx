@@ -142,7 +142,7 @@ const ProductList = async () => {
 
   // you can use this to get all the images
 
-  const getImages = (imageIn) => {
+  const getImage = (imageIn) => {
     const theImage = images.find((image) => image?.pathname === imageIn)?.url;
     console.log(theImage);
     return theImage;
@@ -152,7 +152,8 @@ const ProductList = async () => {
   // console.log(productLoad);
   // create product map
   const productMap = productLoad?.map((product, i) => {
-    const imageUrl = images[i]?.url;
+    // const imageUrl = images[i]?.url;
+    const imageUrl = getImage(product.coverImage);
     return <ProductItem key={i} product={product} imageSrc={imageUrl} />;
   });
 
