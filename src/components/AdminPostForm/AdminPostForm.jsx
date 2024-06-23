@@ -279,12 +279,11 @@ const AdminPostForm = () => {
         body: formData,
       });
 
-      // console.log(res);
-      // if (!res.ok) {
-      //   console.log(res);
-      //   throw new Error("something went wrong, request not sent");
-      // }
       console.log(res);
+      if (!res.ok) {
+        console.log(res);
+        throw new Error("something went wrong, request not sent");
+      }
 
       const data = await res.json();
       if (data) {
