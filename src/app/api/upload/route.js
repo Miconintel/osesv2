@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import sharp from "sharp";
 import { Product } from "@/lib/model/Product";
 import { connectDb } from "@/lib/utilities/util";
-import { Blob } from "buffer";
+import { v4 as uuidv4 } from "uuid";
 
 // console.log(__dirname);
 // console.log(process.cwd());
@@ -40,7 +40,8 @@ export const POST = async (request, { params }) => {
       // writefile
       // console.log(__dirname);
       // console.log(process.cwd());
-      const theName = image.name.replaceAll(" ", "_");
+      // const theName = image.name.replaceAll(" ", "_");
+      const theName = `${uuidv4()}.jpg`;
 
       const fileFormat = await sharp(fileBuffer)
         .resize(300, 300, {
@@ -51,6 +52,15 @@ export const POST = async (request, { params }) => {
         .toFormat("jpeg")
         .jpeg({ quality: 100 })
         .toFile(path.join(process.cwd(), `public/images/${theName}`));
+
+      const thePath = path.join(__dirname, `public/images/${theName}`);
+      const thePath2 = path.join(process.cwd(), `public/images/${theName}`);
+      const dname = `${Date.now()}-${Math.round(Math.random())}`;
+      const ranName = uuidv4();
+
+      // console.log(thePath);
+      // console.log(thePath2);
+      console.log(ranName);
 
       return theName;
     };
@@ -92,7 +102,7 @@ export const POST = async (request, { params }) => {
     console.log(e);
     return NextResponse.json(
       {
-        error: "there is a problem",
+        error: e.message,
       },
       { status: 500 }
     );
