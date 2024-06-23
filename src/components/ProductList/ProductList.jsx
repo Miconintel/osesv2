@@ -3,6 +3,7 @@ import ProductItem from "./ProductItem/ProductItem";
 import { getProducts } from "@/lib/data/productData";
 import styles from "./ProductList.module.css";
 import { unstable_noStore as noStore } from "next/cache";
+import { list } from "@vercel/blob";
 
 //
 //
@@ -132,11 +133,27 @@ const products = [
 //
 const ProductList = async () => {
   noStore();
+  async function allImages() {
+    const blobs = await list();
+    return blobs;
+  }
+  const blob = await allImages();
+  const images = blob.blobs;
+
+  // you can use this to get all the images
+
+  const getImages = (imageIn) => {
+    const theImage = images.find((image) => image?.pathname === imageIn)?.url;
+    console.log(theImage);
+    return theImage;
+  };
+
   const productLoad = await getProducts();
   // console.log(productLoad);
   // create product map
   const productMap = productLoad?.map((product, i) => {
-    return <ProductItem key={i} product={product} />;
+    const imageUrl = images[i]?.url;
+    return <ProductItem key={i} product={product} imageSrc={imageUrl} />;
   });
 
   // //   return jsx

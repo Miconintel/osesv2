@@ -3,7 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./ProductItem.module.css";
 import Icon from "@/components/Icon/Icon";
-const ProductItem = ({ product }) => {
+import { list } from "@vercel/blob";
+
+//
+//
+
+const ProductItem = async ({ product, imageSrc }) => {
   const {
     name,
     discountPrice,
@@ -13,16 +18,33 @@ const ProductItem = ({ product }) => {
     ratingsAverage,
     coverImage,
   } = product;
+  console.log(imageSrc);
 
-  console.log(promo);
-  console.log(discountPrice);
+  // async function allImages() {
+  //   const blobs = await list();
+  //   return blobs;
+  // }
+  // const blob = await allImages();
+  // const images = blob.blobs;
+
+  // const getImages = (imageIn) => {
+  //   const theImage = images.find((image) => image?.pathname === imageIn)?.url;
+  //   console.log(theImage);
+  //   return theImage;
+  // };
+
+  // console.log(getImages());
+
+  // console.log(promo);
+  // console.log(discountPrice);
   return (
     <li className={styles.item}>
       <Link href="#">
         <div className={styles.imageContainer}>
           <Image
             alt={name + category}
-            src={coverImage ? `/images/${coverImage}` : "/placeholder.jpg"}
+            // src={coverImage ? `/images/${coverImage}` : "/placeholder.jpg"}
+            src={coverImage ? imageSrc : "/placeholder.jpg"}
             fill
             className={styles.img}
           />

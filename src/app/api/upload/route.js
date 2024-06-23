@@ -6,6 +6,7 @@ import sharp from "sharp";
 import { Product } from "@/lib/model/Product";
 import { connectDb } from "@/lib/utilities/util";
 import { v4 as uuidv4 } from "uuid";
+import { put } from "@vercel/blob";
 
 // console.log(__dirname);
 // console.log(process.cwd());
@@ -19,29 +20,30 @@ export const POST = async (request, { params }) => {
     const { name, category, description, image, price, discount } =
       Object.fromEntries(formData);
 
-    // console.log({
-    //   name,
-    //   category,
-    //   description,
-    //   image,
-    // });
+    console.log(path.join(process.cwd(), `public/images/me.jpg`));
 
     // files
     const handleFile = async (image) => {
       // const file = formData.get("image");
-      // console.log(image);
 
       if (!image) return;
 
       const fileArrayBuffer = await image.arrayBuffer();
       const fileBuffer = Buffer.from(fileArrayBuffer);
-      console.log("running");
 
       // writefile
-      // console.log(__dirname);
-      // console.log(process.cwd());
-      // const theName = image.name.replaceAll(" ", "_");
+
       const theName = `${uuidv4()}.jpg`;
+
+      // const fileFormat = await sharp(fileBuffer)
+      //   .resize(300, 300, {
+      //     width: 300,
+      //     height: 300,
+      //     fit: "cover",
+      //   })
+      //   .toFormat("jpeg")
+      //   .jpeg({ quality: 100 })
+      //   .toFile(path.join(process.cwd(), `public/images/${theName}`));
 
       const fileFormat = await sharp(fileBuffer)
         .resize(300, 300, {
@@ -51,26 +53,21 @@ export const POST = async (request, { params }) => {
         })
         .toFormat("jpeg")
         .jpeg({ quality: 100 })
-        .toFile(path.join(process.cwd(), `public/images/${theName}`));
+        .toBuffer();
 
-      const thePath = path.join(__dirname, `public/images/${theName}`);
-      const thePath2 = path.join(process.cwd(), `public/images/${theName}`);
-      const dname = `${Date.now()}-${Math.round(Math.random())}`;
-      const ranName = uuidv4();
-
-      // console.log(thePath);
-      // console.log(thePath2);
-      console.log(ranName);
+      const blob = await put(theName, fileFormat, {
+        access: "public",
+      });
 
       return theName;
     };
 
+    // handling file
     fileName = await handleFile(image);
 
     // handling numbwes
     const priceNumber = Number(price);
     const discountNumber = Number(discount);
-    // fileName = await handleFile(image);
 
     //
     //
