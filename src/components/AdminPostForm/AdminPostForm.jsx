@@ -281,6 +281,7 @@ const AdminPostForm = () => {
 
       // console.log(res);
       if (!res.ok) {
+        console.log(res);
         throw new Error("something went wrong, request not sent");
       }
 
