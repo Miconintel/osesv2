@@ -132,7 +132,7 @@ const products = [
 //
 //
 const ProductList = async () => {
-  noStore();
+  // noStore();
   async function allImages() {
     const blobs = await list();
     return blobs;

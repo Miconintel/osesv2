@@ -7,6 +7,7 @@ import { Product } from "@/lib/model/Product";
 import { connectDb } from "@/lib/utilities/util";
 import { v4 as uuidv4 } from "uuid";
 import { put } from "@vercel/blob";
+import { revalidatePath } from "next/cache";
 
 // console.log(__dirname);
 // console.log(process.cwd());
@@ -86,6 +87,8 @@ export const POST = async (request, { params }) => {
     };
 
     const data = await Product.create(document);
+    // revalidatePath("/");
+    // revalidatePath("/products");
     // console.log(data);
 
     return NextResponse.json(

@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./ProductItem.module.css";
 import Icon from "@/components/Icon/Icon";
-import { list } from "@vercel/blob";
 
 //
 //
@@ -18,7 +17,8 @@ const ProductItem = async ({ product, imageSrc }) => {
     ratingsAverage,
     coverImage,
   } = product;
-  console.log(imageSrc);
+  // console.log(imageSrc);
+  // console.log(coverImage);
 
   // async function allImages() {
   //   const blobs = await list();
@@ -44,7 +44,7 @@ const ProductItem = async ({ product, imageSrc }) => {
           <Image
             alt={name + category}
             // src={coverImage ? `/images/${coverImage}` : "/placeholder.jpg"}
-            src={coverImage ? imageSrc : "/placeholder.jpg"}
+            src={imageSrc || "/images/placeholder.jpg"}
             fill
             className={styles.img}
           />
