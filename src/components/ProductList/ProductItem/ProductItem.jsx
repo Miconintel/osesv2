@@ -54,7 +54,14 @@ const ProductItem = async ({ product, imageSrc }) => {
           <p className={styles.product}>
             {name}
             <span className={styles.icon}>
-              <Icon icon="star" inStyle={{ width: "16px", height: "16px" }} />
+              <Icon
+                icon="star"
+                inStyle={{
+                  width: "14px",
+                  height: "14px",
+                  fill: "var(--color-secondary)",
+                }}
+              />
               {ratingsAverage}
             </span>
           </p>

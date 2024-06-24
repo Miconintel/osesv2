@@ -92,12 +92,12 @@ body {
   /* … */
 }
 @media only screen and (max-width: 52em) {
-  /* … */
-}
-@media only screen and (max-width: 32em) {
   html {
     font-size: 60%;
   }
+  /* … */
+}
+@media only screen and (max-width: 32em) {
   .grid-container {
     grid-template-columns:
       [full-start] minmax(2.4rem, 1fr) [left-margin-end cont-start] repeat(

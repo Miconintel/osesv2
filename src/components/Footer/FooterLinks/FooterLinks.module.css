@@ -5,6 +5,12 @@
   gap: 4rem;
 }
 
+.item {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 .item a {
   text-decoration: none;
   color: var(--color-white-brand);
@@ -18,6 +24,12 @@
   /* … */
 }
 @media only screen and (max-width: 32em) {
+  .list {
+    gap: 1rem;
+  }
+  .item a {
+    font-size: 1.2rem;
+  }
   /* … */
 }
 @media only screen and (max-width: 22em) {

@@ -3,7 +3,6 @@
   justify-content: space-between;
   align-items: center;
   grid-column: full-start/full-end;
-  /* grid-row: full-start/cont-start; */
   padding: 4rem 8rem;
   z-index: 1;
   /* box-shadow: 1px 1px 1rem 0rem var(--color-text-2); */
@@ -11,14 +10,14 @@
   background-color: var(--color-white-brand);
   width: 100%;
   border-bottom: 2px solid var(--color-primary-lightest);
-  /* position: relative; */
+  font-size: var(--font-header);
 }
 
-.logo {
+/* .logo {
   font-size: var(--font-header);
   font-weight: bold;
   text-transform: uppercase;
-}
+} */
 
 .sticky {
   position: fixed;
@@ -32,6 +31,7 @@
   .container {
     /* box-shadow: 1px 1px 1rem 0rem var(--color-background-2); */
     padding: 2rem 4rem;
+    font-size: 2rem;
   }
 
   /* … */

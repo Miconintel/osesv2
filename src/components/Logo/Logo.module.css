@@ -1,5 +1,5 @@
 .logo {
-  font-size: var(--font-header);
+  font-size: inherit;
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;

@@ -7,10 +7,10 @@
 }
 
 @media only screen and (max-width: 65em) {
+  /* … */
   .list {
     flex-direction: row;
   }
-  /* … */
 }
 @media only screen and (max-width: 52em) {
   /* … */

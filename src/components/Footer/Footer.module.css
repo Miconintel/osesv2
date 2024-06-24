@@ -1,20 +1,20 @@
 .container {
-  /* height: 10vw; */
   background-color: var(--color-primary-darkest);
   grid-column: full-start/full-end;
   padding: 4rem 8rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
   border-top: 2px solid var(--color-primary);
   align-items: center;
-  /* height: 40vh; */
+  font-size: var(--font-header);
 }
-.logo {
+/* .logo {
   font-size: 3rem;
   font-weight: bold;
-}
+} */
 
 @media only screen and (max-width: 65em) {
   /* … */
@@ -26,6 +26,9 @@
   /* … */
 }
 @media only screen and (max-width: 32em) {
+  .logo {
+    font-size: 2rem;
+  }
   /* … */
 }
 @media only screen and (max-width: 22em) {

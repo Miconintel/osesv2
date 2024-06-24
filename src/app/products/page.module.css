@@ -2,7 +2,6 @@
   grid-column: cont-start / cont-end;
   font-size: var(--font-primary);
   padding: 12rem 0;
-  width: 100%;
   height: max-content;
 }
 
