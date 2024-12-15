@@ -3,14 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./NavLinks.module.css";
-import { signOut } from "@/lib/auth/auth";
 import logoutAction from "@/lib/actions/logoutAction";
 import { usePathname } from "next/navigation";
 
 const NavLinks = ({ session }) => {
   const [state, setState] = useState();
   const pathname = usePathname();
-  console.log(pathname);
 
   // imported
   const isAdmin = session?.role === "admin";
@@ -44,8 +42,8 @@ const NavLinks = ({ session }) => {
           {isAdmin && (
             <li>
               <Link
-                href="/admin"
-                className={pathname === "/admin" ? styles.action : ""}
+                href="/admin/products"
+                className={pathname === "/admin/products" ? styles.action : ""}
               >
                 Admin
               </Link>
@@ -58,12 +56,12 @@ const NavLinks = ({ session }) => {
           </li>
         </>
       ) : (
-        <li>
+        <li className={styles.shop}>
           <Link
             href="/login"
             className={pathname === "/login" ? styles.action : ""}
           >
-            Login
+            Shop Now
           </Link>
         </li>
       )}

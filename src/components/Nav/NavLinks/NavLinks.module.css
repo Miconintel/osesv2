@@ -11,19 +11,30 @@
 }
 
 .list a {
-  /* color: var(--color-primary); */
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
-a.action {
-  padding: 1.2rem 1.2rem;
+a.action,
+.list a:hover {
+  /* padding: 1.2rem 1.2rem;
   border: none;
-  background-color: var(--color-primary);
-  color: var(--color-white-brand);
-  cursor: pointer;
+  border-radius: var(--radius-primary); 
+  background-color: var(--color-primary);  */
+
+  /* because color property is clashing for the same selection ,I chained the element selector
+  a with th class selector
+  */
+  color: var(--color-secondary);
+}
+
+.shop a {
+  border: none;
   border-radius: var(--radius-primary);
-  /* font-size: var(--font-primary); */
+  background-color: var(--color-primary);
+  padding: 1.2rem 1.2rem;
+  color: white;
 }
 
 .logout {
@@ -31,7 +42,7 @@ a.action {
   color: inherit;
   background: none;
   font-size: inherit;
-  /* font-size: var(--font-primary); */
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 65em) {

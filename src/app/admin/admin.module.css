@@ -1,13 +1,9 @@
 .container {
   grid-column: col-start 2 / cont-end;
-  min-height: max-content;
-  /* display: flex; */
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-items: center;
-
   padding: 4rem 0;
 }
 

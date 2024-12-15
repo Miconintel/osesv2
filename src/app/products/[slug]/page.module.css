@@ -1,0 +1,20 @@
+.container {
+  grid-column: cont-start / cont-end;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+  gap: 6rem;
+  padding: 12rem 0;
+  min-height: 100vh;
+}
+
+@media only screen and (max-width: 65em) {
+}
+@media only screen and (max-width: 52em) {
+  /* potrait tablet || landscape phone */
+}
+@media only screen and (max-width: 32em) {
+  /* big phone screens */
+}
+@media only screen and (max-width: 22em) {
+  /* small phone screens */
+}

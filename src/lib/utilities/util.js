@@ -13,13 +13,11 @@ export const connectDb = async function () {
   try {
     const db = await mongoose.connect(url, {
       dbName: "OsesFood",
-      serverSelectionTimeoutMS: 2000,
+      // serverSelectionTimeoutMS: 2000,
     });
     connected.connection = db.connections[0];
-    // console.log(db);
-    // console.log(connected.connection);
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     throw err;
   }
 };

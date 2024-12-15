@@ -13,12 +13,6 @@
   font-size: var(--font-header);
 }
 
-/* .logo {
-  font-size: var(--font-header);
-  font-weight: bold;
-  text-transform: uppercase;
-} */
-
 .sticky {
   position: fixed;
   /* box-shadow: 1px 1px 1rem 0rem var(--color-text-2); */
@@ -29,7 +23,6 @@
 }
 @media only screen and (max-width: 52em) {
   .container {
-    /* box-shadow: 1px 1px 1rem 0rem var(--color-background-2); */
     padding: 2rem 4rem;
     font-size: 2rem;
   }

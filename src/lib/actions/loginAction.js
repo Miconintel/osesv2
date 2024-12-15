@@ -27,7 +27,6 @@ const LoginAction = async (prevState, formData) => {
 
   try {
     // I had to do this to make sure I am returning a brand new object and not the previous object passed in
-
     // const { email, password } = Object.fromEntries(formData);
     const emailCheck = emailValidation.safeParse({
       email: email,
@@ -48,15 +47,21 @@ const LoginAction = async (prevState, formData) => {
     };
     return toReturn;
   } catch (e) {
+    // if errors are not thrown on the authorize, the login throws an error that is
+    // called credential error to this place and it is called
+    // credentials error
+
+    // if the error is from the authorize function, the error is thrown to the login, and the login throws it
+    // as a callback error
     console.log(e);
 
     if (e.message !== "NEXT_REDIRECT") {
-      // sstop redirectiong from happening
+      // stop redirectiong from happening
       runFinally = false;
 
-      // handle network error
+      // handle network error/this error will be thrown from authorize and will bear the name
+      // credential sign in
       if (e.name === "CallbackRouteError") {
-        console.log(e.cause.err);
         toReturn = {
           ...toReturn,
           success: false,
@@ -64,9 +69,8 @@ const LoginAction = async (prevState, formData) => {
         };
 
         return toReturn;
-      }
-      if (e.type === "CredentialsSignin") {
-        // handle credentials error
+      } else if (e.name === "CredentialsSignin") {
+        console.log(e.name);
         toReturn = {
           ...toReturn,
           success: false,
@@ -74,13 +78,14 @@ const LoginAction = async (prevState, formData) => {
         };
 
         return toReturn;
+      } else {
+        toReturn = {
+          ...toReturn,
+          success: false,
+          message: "something went wrong ,we are fixing it",
+        };
       }
 
-      toReturn = {
-        ...toReturn,
-        success: false,
-        message: "something went wrong ,we are fixing it",
-      };
       return toReturn;
     }
   } finally {

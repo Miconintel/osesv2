@@ -76,7 +76,7 @@ const ResponsiveLinks = ({ session }) => {
         <>
           {isAdmin && (
             <li>
-              <Link href="/admin">Admin</Link>
+              <Link href="/admin/products">Admin</Link>
             </li>
           )}
           <li>

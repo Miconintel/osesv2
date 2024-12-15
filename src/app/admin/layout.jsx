@@ -1,13 +1,12 @@
 import React from "react";
 import MiniNav from "@/components/MiniNav/MiniNav";
 
-import classes from "./adminGlobal.module.css";
-
-const layout = ({ children }) => {
+const layout = ({ children, products }) => {
   return (
     <>
-      <MiniNav />
+      {/* <MiniNav /> */}
       {children}
+      {products}
     </>
   );
 };

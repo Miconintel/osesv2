@@ -6,7 +6,6 @@
   width: 100%;
   background-color: var(--color-secondary);
   transition: all 1s ease-in;
-  /* display: none; */
 }
 
 .effect {

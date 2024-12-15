@@ -3,29 +3,33 @@
 import React, { useState } from "react";
 import MiniNavItem from "./MiniNavItem/MiniNavItem";
 import classes from "./MiniNavLinks.module.css";
+import { usePathname } from "next/navigation";
 
 const linkItem = [
-  { id: 1, content: "SUMMARY" },
-  { id: 2, content: "PRODUCTS" },
-  { id: 3, content: "ORDERS" },
-  { id: 4, content: "USERS" },
+  { id: 1, content: "Summary", href: "/admin/summary" },
+  { id: 2, content: "Products", href: "/admin/products" },
+  { id: 3, content: "Orders", href: "/admin/orders" },
+  // { id: 4, content: "Users", href: "/admin/users" },
 ];
 
 const MiniNavLinks = () => {
   const [active, setActive] = useState(1);
-  const handleActive = (id) => {
-    setActive(id);
-  };
+  // const handleActive = (id) => {
+  //   setActive(id);
+  // };
+  const pathname = usePathname();
+
   return (
     <ul className={classes.list}>
       {linkItem.map((el, i) => (
         <MiniNavItem
           key={el.id}
-          id={el.id}
-          onHandleActive={handleActive}
           content={el.content}
-          selected={active}
-          // className={active === el.id && classes.active}
+          pathname={pathname}
+          href={el.href}
+          // id={el.id}
+          // onHandleActive={handleActive}
+          // selected={active}
         />
       ))}
     </ul>

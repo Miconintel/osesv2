@@ -210,16 +210,10 @@ const AdminPostForm = () => {
   const handleChangeInputFile = (e) => {
     const target = e.target;
     const fileTarget = target.files[0];
-    // const reader = new FileReader();
-    // reader.onload = (evt) => {
-    //   console.log(evt.target.result);
-    // };
-    // reader.readAsArrayBuffer(fileTarget);
     const blob = fileTarget.arrayBuffer();
 
     console.log(fileTarget);
     const actionObject = { type: "file", payload: fileTarget };
-    // const actionObject = { type: "file", payload: blob };
     action(actionObject);
   };
 

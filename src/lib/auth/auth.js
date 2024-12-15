@@ -25,18 +25,10 @@ const getUserFromDb = async (credentials) => {
 
     if (!passWordCorrect) {
       throw new Error("incorrect email or password");
-      // return null;
     }
-
-    // console.log(passHash);
-    // console.log(passWordCorrect);
-
-    // console.log(email, password);
-    // console.log(user);
 
     return user;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };
@@ -56,18 +48,15 @@ const providers = [
     authorize: async (credentials) => {
       try {
         let user = null;
-
-        // logic to verify if user exists
-        // this logic only returns user or throws an error.
         user = await getUserFromDb(credentials);
-
-        // return user object with the their profile data
         return user;
       } catch (e) {
-        console.log(e);
         if (e.name === "MongoServerSelectionError") {
           throw e;
         }
+        // if the error is mongo server selection, then the next auth login, should see it, and
+        // that is why I am throwing the error. else, I wont throw it and the next auth login will tag it
+        // credential error
         // I caught the error, but dont want to throw it, so thay I can see the credential sign in error.
         // if I throw it , I am going to have to see callback error issue instead of credential sign in err.
         // throw e;
@@ -113,34 +102,29 @@ export const myNextAuthOptions = {
 
       return isLoggedIn;
     },
-    async jwt({ token, user }) {
-      // console.log(user);
-      // console.log(token);
-      console.log(user);
-      if (user) {
-        token.id = user.id;
-        token.role = user.role;
-      }
-      return token;
-    },
 
-    async session({ session, token }) {
-      if (token) {
-        session.id = token.id;
-        session.role = token.role;
-      }
-      // console.log(session);
-      return session;
-    },
+    //////DO NOT DELETE VERYI IMPORTANT, DO NOT DELETE, IT IS PASSED FROM AUTH CONFIG!!!
+
+    // async jwt({ token, user }) {
+    //   if (user) {
+    //     token.id = user.id;
+    //     token.role = user.role;
+    //   }
+    //   return token;
+    // },
+
+    // async session({ session, token }) {
+    //   if (token) {
+    //     session.id = token.id;
+    //     session.role = token.role;
+    //   }
+    //   return session;
+    // },
 
     ...authConfig.callbacks,
   },
 };
 
-// export const {
-//   signIn,
-//   signOut,
-//   handlers: { GET, POST },
-//   auth,
-// } = NextAuth(myNextAuthOptions);
 export const { signIn, signOut, handlers, auth } = NextAuth(myNextAuthOptions);
+
+// this auth is for login signIn

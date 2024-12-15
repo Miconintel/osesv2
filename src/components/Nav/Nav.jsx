@@ -3,7 +3,7 @@ import React from "react";
 import NavLinks from "./NavLinks/NavLinks";
 import styles from "./Nav.module.css";
 import { auth } from "@/lib/auth/auth";
-import Drop from "./Responsive/Drop";
+import Responsive from "./Responsive/Responsive";
 import Logo from "../Logo/Logo";
 import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
 
@@ -26,7 +26,7 @@ const Nav = ({ session }) => {
     >
       <Logo />
       <NavLinks session={session} />
-      <Drop session={session} />
+      <Responsive session={session} />
     </nav>
   );
 };

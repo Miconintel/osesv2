@@ -1,0 +1,46 @@
+/* .list {
+  list-style: none;
+  overflow: scroll;
+  height: 75vh;
+} */
+
+.table {
+  border-collapse: collapse;
+  border: 1px solid var(--color-background-2);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  display: block;
+  height: 80vh;
+  overflow: scroll;
+}
+
+.head {
+  background-color: var(--color-primary-lightest);
+}
+
+.head th {
+  padding: 8px 10px;
+  border: 1px solid var(--color-background-2);
+}
+
+@media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  .container {
+    justify-content: center;
+  }
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  .logo {
+    font-size: 2rem;
+  }
+  .table {
+    height: 40vh;
+  }
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
+}

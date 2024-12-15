@@ -32,7 +32,6 @@ const schemaOptions = {
   coverImage: {
     type: String,
     set: (value) => {
-      // console.log(value);
       if (value === null) {
         return "placeholder.jpg";
       }
@@ -68,7 +67,6 @@ const productSchema = mongoose.Schema(schemaOptions, {
 // virtuals
 
 productSchema.virtual("promo").get(function () {
-  // console.log(this.discountPrice);
   if (!this.discountPrice > 0) return 0;
   const percentOffPrice = this.price - this.discountPrice;
   const percentageOff = Math.ceil((percentOffPrice * 100) / this.price);
@@ -90,12 +88,10 @@ productSchema.pre("save", async function (next, options) {
 
 productSchema.pre("find", function () {
   console.log("i pre finds");
-  // console.log(doc);
 });
 
 productSchema.post("find", async function () {
   console.log("i post fiddnd");
-  // console.log(doc);
 });
 
 // creating model

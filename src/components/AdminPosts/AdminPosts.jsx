@@ -1,34 +1,36 @@
-"use client";
 import React from "react";
-import { useState, useEffect } from "react";
+import { getProducts } from "@/lib/data/productData";
+import AdminPostsItem from "./AdminPostsItem/AdminPostsItem";
+import styles from "./AdminPosts.module.css";
 
-const AdminPosts = () => {
-  const [inputState, setInputState] = useState("");
+// const AdminPosts = async () => {
+//   const products = await getProducts();
+//   // console.log(products);
+//   const itemJsx = products.map((product) => (
+//     <AdminPostsItem product={product} key={product.id}></AdminPostsItem>
+//   ));
+//   return <ul className={styles.list}>{itemJsx}</ul>;
+// };
 
-  const handleChangeInput = (e) => {
-    const target = e.target;
-    const fileTarget = target.files[0];
-    setInputState(fileTarget);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", inputState);
-
-    const res = await fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    });
-
-    console.log(await res.json());
-  };
-
+const AdminPosts = async () => {
+  const products = await getProducts();
+  // console.log(products);
+  const itemJsx = products.map((product) => (
+    <AdminPostsItem product={product} key={product.id}></AdminPostsItem>
+  ));
   return (
-    <form encType="multipart/form-data" onSubmit={handleSubmit}>
-      <input type="file" onChange={handleChangeInput} name="image" id="image" />
-      <button>submit</button>
-    </form>
+    <table className={styles.table}>
+      <thead className={styles.head}>
+        <tr>
+          <th>name</th>
+          <th>price</th>
+          <th>availability</th>
+          <th>actions</th>
+        </tr>
+      </thead>
+
+      <tbody className={styles.body}>{itemJsx}</tbody>
+    </table>
   );
 };
 

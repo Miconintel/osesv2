@@ -1,5 +1,3 @@
-import path from "path";
-import { writeFile } from "fs/promises";
 import { Buffer } from "node:buffer";
 import { NextResponse } from "next/server";
 import sharp from "sharp";
@@ -7,10 +5,6 @@ import { Product } from "@/lib/model/Product";
 import { connectDb } from "@/lib/utilities/util";
 import { v4 as uuidv4 } from "uuid";
 import { put } from "@vercel/blob";
-import { revalidatePath } from "next/cache";
-
-// console.log(__dirname);
-// console.log(process.cwd());
 
 export const POST = async (request, { params }) => {
   let fileName;
@@ -21,12 +15,8 @@ export const POST = async (request, { params }) => {
     const { name, category, description, image, price, discount } =
       Object.fromEntries(formData);
 
-    console.log(path.join(process.cwd(), `public/images/me.jpg`));
-
     // files
     const handleFile = async (image) => {
-      // const file = formData.get("image");
-
       if (!image) return;
 
       const fileArrayBuffer = await image.arrayBuffer();
@@ -36,6 +26,7 @@ export const POST = async (request, { params }) => {
 
       const theName = `${uuidv4()}.jpg`;
 
+      // THIS IS FOR SAVING IT IN A LOCAL FILE
       // const fileFormat = await sharp(fileBuffer)
       //   .resize(300, 300, {
       //     width: 300,
@@ -72,8 +63,6 @@ export const POST = async (request, { params }) => {
 
     //
     //
-    //
-    //
     // db connect
     connectDb();
 
@@ -87,9 +76,6 @@ export const POST = async (request, { params }) => {
     };
 
     const data = await Product.create(document);
-    // revalidatePath("/");
-    // revalidatePath("/products");
-    // console.log(data);
 
     return NextResponse.json(
       {

@@ -3,11 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./ProductItem.module.css";
 import Icon from "@/components/Icon/Icon";
+import { getBlobImage } from "@/lib/utilities/blob";
 
 //
 //
 
-const ProductItem = async ({ product, imageSrc }) => {
+const ProductItem = async ({ product }) => {
   const {
     name,
     discountPrice,
@@ -16,30 +17,15 @@ const ProductItem = async ({ product, imageSrc }) => {
     promo,
     ratingsAverage,
     coverImage,
+    slug,
+    id,
   } = product;
-  // console.log(imageSrc);
-  // console.log(coverImage);
+  // console.log(id);
+  const imageSrc = await getBlobImage(coverImage);
 
-  // async function allImages() {
-  //   const blobs = await list();
-  //   return blobs;
-  // }
-  // const blob = await allImages();
-  // const images = blob.blobs;
-
-  // const getImages = (imageIn) => {
-  //   const theImage = images.find((image) => image?.pathname === imageIn)?.url;
-  //   console.log(theImage);
-  //   return theImage;
-  // };
-
-  // console.log(getImages());
-
-  // console.log(promo);
-  // console.log(discountPrice);
   return (
     <li className={styles.item}>
-      <Link href="#">
+      <Link href={`/products/${id}`}>
         <div className={styles.imageContainer}>
           <Image
             alt={name + category}

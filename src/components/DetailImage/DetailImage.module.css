@@ -1,0 +1,8 @@
+.container {
+}
+
+.imageContainer {
+  position: relative;
+  max-width: 40rem;
+  height: 40rem;
+}

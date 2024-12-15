@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  justify-content: space-between;
+}
+
+.price span:last-of-type {
+  color: var(--color-secondary);
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.action {
+  display: flex;
+  gap: 2rem;
+}
+
+.quantity {
+  border: 0.1rem var(--color-secondary) solid;
+  height: 4.8rem;
+  font-size: 5rem;
+  display: flex;
+  border-radius: var(--radius-primary);
+  align-items: center;
+}
+
+.quantity > button {
+  height: 4.8rem;
+  width: 4.8rem;
+  border: none;
+  background: none;
+  font-size: 2rem;
+  border-radius: 50%;
+  text-align: center;
+  /* font-size: 2.6rem; */
+}
+
+.quantity > input {
+  height: 4.8rem;
+  width: 4.8rem;
+  text-align: center;
+
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  display: inline;
+  /* font-size: 1.6rem; */
+  /* padding-left: 1.4rem; */
+}
+
+.action > button {
+  font-weight: bold;
+  padding: 1.6rem 1rem;
+  border-radius: var(--radius-primary);
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-white-brand);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 65em) {
+  /* landscape portrait */
+  .nav {
+    grid-column: full-start/full-end;
+  }
+}
+@media only screen and (max-width: 52em) {
+  /* potrait tablet || landscape phone */
+}
+@media only screen and (max-width: 32em) {
+  .container {
+    gap: 2rem;
+  }
+  /* big phone screens */
+}
+@media only screen and (max-width: 22em) {
+  /* small phone screens */
+}

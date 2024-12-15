@@ -6,7 +6,6 @@ import { store } from "@/lib/redux/store";
 
 const StoreProvider = ({ children }) => {
   const storeState = useRef();
-  // const { current } = storeState;
 
   if (!storeState.current) {
     storeState.current = store();

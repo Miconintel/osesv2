@@ -1,26 +1,31 @@
 import React from "react";
 import classes from "./MiniNavItem.module.css";
+import Link from "next/link";
 
-const MiniNavItem = ({ id, onHandleActive, content, selected }) => {
+const MiniNavItem = ({
+  content,
+  href,
+  pathname,
+  id,
+  onHandleActive,
+  selected,
+}) => {
   //see
-  const handleActive = (id) => {
-    onHandleActive(id);
-  };
+  // const handleActive = (id) => {
+  //   onHandleActive(id);
+  // };
 
   // jsx
   return (
     <li
-      id={id}
-      onClick={() => handleActive(id)}
-      // className={classes.item}
-      className={`${classes.item} ${selected === id && classes.active} `}
+      // id={id}
+      // onClick={() => handleActive(id)}
+      // className={`${classes.item} ${selected === id && classes.active} `}
+      className={`${classes.item} ${pathname === href && classes.active}`}
     >
-      <button
-        className={classes.button}
-        // className={`${classes.button} ${selected === id && classes.active} `}
-      >
+      <Link href={href} className={classes.link}>
         {content}
-      </button>
+      </Link>
     </li>
   );
 };

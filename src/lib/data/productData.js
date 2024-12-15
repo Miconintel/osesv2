@@ -1,6 +1,6 @@
 import { Product } from "../model/Product";
 import { connectDb } from "../utilities/util";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 
 export const getProducts = async () => {
   try {
@@ -8,10 +8,20 @@ export const getProducts = async () => {
     connectDb();
     //
     const product = await Product.find({});
-    revalidatePath("/products");
-    // console.log(product);
     return product;
   } catch (err) {
     console.log(err);
+    throw err;
+  }
+};
+
+export const getProduct = async (slug) => {
+  try {
+    connectDb();
+    const product = await Product.findOne({ _id: slug });
+    return product;
+  } catch (err) {
+    console.log(err);
+    throw err;
   }
 };

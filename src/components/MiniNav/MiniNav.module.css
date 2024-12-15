@@ -1,6 +1,7 @@
 .nav {
   background-color: var(--color-primary-darkest);
   height: 100%;
+  /* grid-column: full-start/cont-start; */
   grid-column: full-start/col-start 2;
 }
 

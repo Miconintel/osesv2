@@ -44,6 +44,7 @@ when you spacify min or max content first in a autofill/fit, it must follow a re
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* line-height: 0; */
 }
 
 *:focus {
@@ -70,23 +71,15 @@ body {
     )
     [cont-end right-margin-start] minmax(4rem, 1fr) [full-end];
 
-  /* grid-template-rows: [full-start] max-content [const-start] max-content[cont-end] max-content[full-end]; */
-
+  grid-template-rows: [full-start] auto [const-start] 1fr [cont-end] auto[full-end];
   background-color: var(--color-background);
   position: relative;
-
-  /* height: 100vh; */
   /* this relative postion is to contain the hero container which is an absolute element.
   without it, the container can still stay inside the home page main, but this is semantically correct */
 
   /* I set the min as the min-content and then declare a fix width as the max
    that way, as it gets smaller ,it keeps adjusting */
 }
-
-/* .children-container {
-  height: max-content;
-  grid-row: cont-start/cont-end;
-} */
 
 @media only screen and (max-width: 65em) {
   /* … */
