@@ -1,3 +1,5 @@
+// "use server";
+
 import { list } from "@vercel/blob";
 
 export const getBlobImage = async function (imageIn) {

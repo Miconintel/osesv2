@@ -1,5 +1,10 @@
 import React from "react";
 import styles from "./AdminPostsItem.module.css";
+import { getBlobImage } from "@/lib/utilities/blob";
+import { deleteProduct } from "@/lib/data/productData";
+import { del } from "@vercel/blob";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 // const AdminPostsItem = ({ product }) => {
 //   return (
@@ -18,15 +23,36 @@ import styles from "./AdminPostsItem.module.css";
 //   );
 // };
 
-const AdminPostsItem = ({ product }) => {
+const AdminPostsItem = async ({ product }) => {
+  const productAction = async function (product, params) {
+    "use server";
+
+    const { coverImage, id } = product;
+    const image = await getBlobImage(coverImage);
+    // delete blob
+    del(image);
+
+    // delete from data
+    const data = await deleteProduct(id);
+
+    revalidatePath("/admin/products"); // Update cached posts
+    redirect("/admin/products");
+    // console.log(image);
+  };
+
   return (
     <tr className={styles.row}>
       <td className={styles.name}>{product.name}</td>
       <td className={styles.price}>${product.price}</td>
       <td className={styles.availability}>available</td>
-      <td className={styles.action}>
-        <button>Edit</button>
-        <button>Delete</button>
+      <td>
+        <form
+          className={styles.action}
+          action={productAction.bind(null, product)}
+        >
+          <button>Edit</button>
+          <button type="submit">Delete</button>
+        </form>
       </td>
     </tr>
   );

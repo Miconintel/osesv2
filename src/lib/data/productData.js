@@ -1,6 +1,5 @@
 import { Product } from "../model/Product";
 import { connectDb } from "../utilities/util";
-// import { revalidatePath } from "next/cache";
 
 export const getProducts = async () => {
   try {
@@ -23,5 +22,17 @@ export const getProduct = async (slug) => {
   } catch (err) {
     console.log(err);
     throw err;
+  }
+};
+
+export const deleteProduct = async (id) => {
+  try {
+    connectDb();
+    const product = await Product.findByIdAndDelete(id);
+    console.log(product);
+    console.log("successful delete");
+    return { message: "deleted successfully" };
+  } catch (err) {
+    console.log(err);
   }
 };

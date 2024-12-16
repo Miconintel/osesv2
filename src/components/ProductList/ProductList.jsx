@@ -138,6 +138,8 @@ const ProductList = async () => {
     });
 
     // //   return jsx
+    if (productMap.length == 0)
+      return <h3>THERE ARE NO PRODUCTS AVAILABLE NOW!!!</h3>;
     return <ul className={styles.list}>{productMap}</ul>;
   } catch (e) {
     console.log(e);

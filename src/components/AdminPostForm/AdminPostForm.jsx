@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, act } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AdminPostForm.module.css";
 import ActionButton from "../ActionButton/ActionButton";
 import { useReducer } from "react";
@@ -38,24 +38,18 @@ const reducerFunction = function (prevState, action) {
 
   // hadndle price
   const priceAction = (payloadf) => {
-    // const { type, payload } = action;
-    // console.log(payloadf);
     returnedState = { ...returnedState, priceInput: payloadf };
     return returnedState;
   };
 
   // hadndle price
   const discountAction = (payloadf) => {
-    // const { type, payload } = action;
-    // console.log(payloadf);
     returnedState = { ...returnedState, discountInput: payloadf };
     return returnedState;
   };
 
   // handle description
   const descriptionAction = (payloadf) => {
-    // const { type, payload } = action;
-    // console.log(payloadf);
     returnedState = { ...returnedState, descriptionInput: payloadf };
     return returnedState;
   };
@@ -130,7 +124,6 @@ const AdminPostForm = () => {
     const nameVal = nameInput.length > 0;
     const catVal = categoryInput.length > 0;
     const priceVal = priceInput > 0;
-    // console.log({ nameVal, catVal });
 
     if (nameVal && catVal && priceVal) {
       setDisabled(false);
@@ -138,8 +131,6 @@ const AdminPostForm = () => {
       setDisabled(true);
     }
   }, [nameInput, categoryInput, priceInput]);
-
-  // console.log({ nameInput, categoryInput, descriptionInput, upload });
 
   // HANDLERS
   // handle name
@@ -149,7 +140,6 @@ const AdminPostForm = () => {
   const handleChangeInputName = (e) => {
     const target = e.target;
     const nameInputf = target.value;
-    // console.log(nameInputf);
     const actionObject = { type: "name", payload: nameInputf };
     action(actionObject);
     nameRef.current.style.border = "none";
@@ -212,7 +202,6 @@ const AdminPostForm = () => {
     const fileTarget = target.files[0];
     const blob = fileTarget.arrayBuffer();
 
-    console.log(fileTarget);
     const actionObject = { type: "file", payload: fileTarget };
     action(actionObject);
   };
@@ -223,20 +212,16 @@ const AdminPostForm = () => {
   //
 
   const handleNameBlur = () => {
-    // console.log(nameRef.current);
     const element = nameRef.current;
     if (nameInput.length === 0) {
       element.style.border = "solid 1px red";
-      // setNameCheck(true);
     }
   };
 
   const handleCategoryBlur = () => {
-    // console.log(categoryRef.current);
     const element = categoryRef.current;
     if (categoryInput.length === 0) {
       element.style.border = "solid 1px red";
-      // setNameCheck(true);
     }
   };
 
@@ -244,7 +229,6 @@ const AdminPostForm = () => {
     const element = priceRef.current;
     if (priceInput.length === 0) {
       element.style.border = "solid 1px red";
-      // setNameCheck(true);
     }
   };
 
@@ -273,7 +257,6 @@ const AdminPostForm = () => {
         body: formData,
       });
 
-      console.log(res);
       if (!res.ok) {
         console.log(res);
         throw new Error("something went wrong, request not sent");
@@ -283,7 +266,6 @@ const AdminPostForm = () => {
       if (data) {
         setMessage("upload successful");
       }
-      // console.log(data);
     } catch (e) {
       console.log(e);
       setMessage(e.message);
@@ -308,9 +290,6 @@ const AdminPostForm = () => {
           onChange={handleChangeInputName}
           onBlur={handleNameBlur}
           ref={nameRef}
-          // style={{
-          //   border: nameCheck ? "solid 1px red" : "none",
-          // }}
         />
       </div>
       <div>
@@ -357,8 +336,6 @@ const AdminPostForm = () => {
             id="product-discount-price"
             name="discount-price"
             onChange={handleChangeInputDiscount}
-            // onBlur={handleCategoryBlur}
-            // ref={categoryRef}
           />
         )}
       </div>

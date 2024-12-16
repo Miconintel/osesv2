@@ -8,6 +8,7 @@
   padding: 4rem 0;
   /* height: 100vh;
   overflow: scroll; */
+  min-height: 100vh;
 }
 
 @media only screen and (max-width: 65em) {
