@@ -13,6 +13,15 @@
   font-size: var(--font-header);
 }
 
+.leftSide,
+.rightSide {
+  display: flex;
+  gap: 8px;
+}
+.cartContainer {
+  position: relative;
+}
+
 .sticky {
   position: fixed;
   /* box-shadow: 1px 1px 1rem 0rem var(--color-text-2); */

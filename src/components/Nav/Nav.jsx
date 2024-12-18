@@ -6,6 +6,7 @@ import { auth } from "@/lib/auth/auth";
 import Responsive from "./Responsive/Responsive";
 import Logo from "../Logo/Logo";
 import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
+import Cart from "../Cart/Cart";
 
 // import NavIntersectionObserver from "../Providers/ObserverProviders/NavIntersectionObserver";
 // import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
@@ -24,9 +25,27 @@ const Nav = ({ session }) => {
       className={`${styles.container} ${fixed ? styles.sticky : ""} `}
       id="nav"
     >
-      <Logo />
-      <NavLinks session={session} />
-      <Responsive session={session} />
+      <div className={styles.leftSide}>
+        {/* shows on small screen */}
+        <Responsive session={session} />
+
+        {/* shows on all screen */}
+        <Logo />
+      </div>
+      {/* <div className={styles.cartContainer}>
+        <Cart />
+      </div> */}
+      {/* <Responsive session={session} /> */}
+
+      <div className={styles.rightSide}>
+        {/* shows on big screen */}
+        <NavLinks session={session} />
+
+        {/* shows on all screen */}
+        <div className={styles.cartContainer}>
+          <Cart />
+        </div>
+      </div>
     </nav>
   );
 };

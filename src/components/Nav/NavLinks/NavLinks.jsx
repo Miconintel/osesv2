@@ -5,10 +5,15 @@ import Link from "next/link";
 import styles from "./NavLinks.module.css";
 import logoutAction from "@/lib/actions/logoutAction";
 import { usePathname } from "next/navigation";
+import { IoCartOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { getTotalQuantity } from "@/lib/redux/stateSlices/cartSlice";
+import Cart from "@/components/Cart/Cart";
 
 const NavLinks = ({ session }) => {
-  const [state, setState] = useState();
+  // const [state, setState] = useState();
   const pathname = usePathname();
+  const totalCartQuantiy = useSelector(getTotalQuantity);
 
   // imported
   const isAdmin = session?.role === "admin";
