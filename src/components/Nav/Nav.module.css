@@ -3,7 +3,9 @@
   justify-content: space-between;
   align-items: center;
   grid-column: full-start/full-end;
-  padding: 4rem 8rem;
+  /* padding: 4rem 8rem; */
+  padding: 0rem 8rem;
+  height: 15vh;
   z-index: 1;
   /* box-shadow: 1px 1px 1rem 0rem var(--color-text-2); */
 

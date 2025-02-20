@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, act } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AdminPostForm.module.css";
 import ActionButton from "../ActionButton/ActionButton";
 import { useReducer } from "react";
@@ -14,14 +14,19 @@ const initialState = {
   priceInput: "",
   discountInput: "",
   upload: "",
-  isLoading: false,
 };
 
 const reducerFunction = function (prevState, action) {
   let returnedState = { ...prevState };
   const { type, payload } = action;
 
+  // handle name
+  // though this is redundant, seperationg this helps for ease of computing, incase, ther is something
+  // that should be done to the payload
   const nameAction = (payloadf) => {
+    // you should not reassign return state
+    // returnedState = { ...returnedState, nameInput: payloadf };
+    // return returnedState;
     return { ...returnedState, nameInput: payloadf };
   };
 
@@ -50,18 +55,13 @@ const reducerFunction = function (prevState, action) {
       return { ...returnedState, discountInput: "" };
     }
     // keep working
-    const discountInputf = Number(payloadf);
+    const discountInputf = Number(target.value);
     return { ...returnedState, discountInput: discountInputf };
   };
 
   // handle description
   const descriptionAction = (payloadf) => {
     return { ...returnedState, descriptionInput: payloadf };
-  };
-
-  // handle description
-  const loadingAction = (payloadf) => {
-    return { ...returnedState, isLoading: !returnedState.isLoading };
   };
 
   // handle file
@@ -83,8 +83,6 @@ const reducerFunction = function (prevState, action) {
       return priceAction(payload);
     case "discount":
       return discountAction(payload);
-    case "loading":
-      return loadingAction(payload);
     case "clear":
       return { ...initialState };
   }
@@ -103,17 +101,9 @@ const AdminPostForm = () => {
   // state
   // these are independent states.
   const [disabled, setDisabled] = useState(true);
-  const [message, setMessage] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
-
-  // selects
   const [discountSelect, setDiscountSelect] = useState("NO");
-  const [inStockSelect, setInStockSelect] = useState(1);
+  const [message, setMessage] = useState("");
 
-  // not recommended, this is used as a hack to force a rerender on each blur, so the
-  // side effect can run
-  // all this can be avoided by simply using state for input validations which I dont want to.
-  // const [tracker, setTracker] = useState(true);
   // use reducer destructure
   const [state, action] = useReducer(reducerFunction, initialState);
   const {
@@ -123,7 +113,6 @@ const AdminPostForm = () => {
     upload,
     priceInput,
     discountInput,
-    isLoading,
   } = state;
 
   // refs
@@ -149,23 +138,66 @@ const AdminPostForm = () => {
   const nameRef = useRef();
   const priceRef = useRef();
   const categoryRef = useRef();
+
   const discountRef = useRef();
   const descriptionRef = useRef();
   const uploadRef = useRef();
 
-  // never read the values on render.
+  // values
+  const nameValue = nameRef.current?.value;
+  const priceValue = priceRef.current?.value;
+  const categoryValue = categoryRef.current?.value;
+  const discountValue = discountRef.current?.value;
+  const descriptionValue = descriptionRef.current?.value;
+  const uploadValue = uploadRef.current?.files[0];
+  // console.log(uploadValue);
   // effects
   //
   //
   useEffect(() => {
     setMessage("");
+    // const nameVal = nameInput.length > 0;
+    // const catVal = categoryInput.length > 0;
+    // const priceVal = priceInput > 0;
 
-    if (nameInput && categoryInput && priceInput && upload) {
+    const priceVal = Number(priceValue) > 0;
+
+    if (nameValue && categoryValue && priceVal) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
-  }, [priceInput, categoryInput, nameInput, upload]);
+  }, [nameValue, categoryValue, priceValue]);
+
+  useEffect(() => {
+    setMessage("");
+
+    // check if input they are number first
+    // now handling this with input attribute
+    // const priceNotANumber = isNaN(priceValue);
+    // const discountNotANumber = isNaN(discountValue);
+    // if (priceValue && priceNotANumber) {
+    //   priceRef.current.value = "";
+    //   return;
+    // }
+    // if (discountValue && discountNotANumber) {
+    //   discountRef.current.value = "";
+    //   return;
+    // }
+
+    // then convert input to a calculable number, since all input returns a string
+
+    const isValid = priceValue > discountValue;
+
+    if (discountValue && !isValid) {
+      console.log("this should be less than the price value");
+      discountRef.current.value = "";
+    }
+    //  if (discountValue > priceValue || discountValue === priceValue) {
+    //    console.log("this should be less than the price value");
+    //    discountRef.current.value = "";
+    //  }
+  }, [discountValue, priceValue]);
 
   // HANDLERS
   // handle name
@@ -197,12 +229,34 @@ const AdminPostForm = () => {
     //
     priceRef.current.style.border = "none";
     //
+    //
+    // this should happen inside the reducer.
+    // const notANumber = isNaN(target.value);
+    // if (notANumber) {
+    //   return action({ type: "price", payload: "" });
+    // }
+
+    // // keep working with target
+    // const priceInputf = Number(target.value);
+    // const actionObject = { type: "price", payload: priceInputf };
+    // action(actionObject);
+    // priceRef.current.style.border = "none";
   };
 
   // handle discount
   const handleChangeInputDiscount = (e) => {
     const target = e.target;
     action({ type: "discount", payload: target.value });
+
+    // this is happening in reducer
+    // const notANumber = isNaN(target.value);
+    // if (notANumber) {
+    //   return action({ type: "discount", payload: "" });
+    // }
+    // // keep working
+    // const discountInputf = Number(target.value);
+    // const actionObject = { type: "discount", payload: discountInputf };
+    // action(actionObject);
   };
 
   // handle description
@@ -226,96 +280,64 @@ const AdminPostForm = () => {
   };
 
   // handle focus checks
-  //BLURS used to change the styles, to avoid rerenders cos of style.
+  //BLURS
   //
   //
 
   const handleNameBlur = () => {
     const element = nameRef.current;
-    // instead of reading the value direct, I am using the state
-    if (!nameInput) {
+    if (nameInput.length === 0) {
       element.style.border = "solid 1px red";
-    } else {
-      element.style.border = "none";
     }
   };
 
   const handleCategoryBlur = () => {
     const element = categoryRef.current;
-    if (!categoryInput) {
+    if (categoryInput.length === 0) {
       element.style.border = "solid 1px red";
-    } else {
-      element.style.border = "none";
     }
   };
 
   const handlePriceBlur = () => {
     const element = priceRef.current;
-    console.log(element.classList.toggle("inputerror"));
-    const isValid = priceInput > 0;
-
-    if (!isValid) {
+    if (priceInput.length === 0) {
       element.style.border = "solid 1px red";
-    } else {
-      element.style.border = "none";
     }
   };
 
-  const handleDiscountBlur = () => {
-    const element = priceRef.current;
-    const isValid = priceInput > discountInput;
-
-    if (!isValid) {
-      element.style.border = "solid 1px red";
-      action({ type: discount, payload: "" });
-    } else {
-      element.style.border = "none";
-    }
-  };
-
-  // complete blurs for other input
   // handle submit
   //
   //
   //
 
   const handleSubmit = async (e) => {
-    console.log(inStockSelect);
     e.preventDefault();
-    action({ type: "loading", payload: null });
-    // setIsLoading(true);
+    action({ type: "clear", payload: null });
 
     try {
       const formData = new FormData();
-
       formData.append("image", upload);
       formData.append("name", nameInput);
       formData.append("category", categoryInput);
       formData.append("description", descriptionInput);
       formData.append("price", priceInput);
       formData.append("discount", discountInput);
-      formData.append("instock", Boolean(inStockSelect));
 
       const res = await fetch("/api/upload", {
         method: "POST",
         body: formData,
       });
-      //
 
       if (!res.ok) {
         throw new Error("something went wrong, upload failed");
       }
 
       const data = await res.json();
-
       if (data) {
-        action({ type: "clear", payload: null });
         setMessage("upload successful");
       }
     } catch (e) {
       setMessage(e.message);
-    } finally {
-      console.log("finally");
     }
   };
 
@@ -329,6 +351,9 @@ const AdminPostForm = () => {
     >
       <div>
         <input
+          // never read a ref value on a component directly
+          // value={nameValue}
+          // value={nameInput}
           type="text"
           placeholder="PRODUCT NAME"
           id="product-name"
@@ -341,6 +366,8 @@ const AdminPostForm = () => {
       </div>
       <div>
         <input
+          // value={categoryValue}
+          // value={categoryInput}
           type="text"
           placeholder="CATEGORY"
           id="product-category"
@@ -351,27 +378,10 @@ const AdminPostForm = () => {
           required
         />
       </div>
-      {/* in stock */}
-      <div className={styles.discount}>
-        <label>IN-STOCK:</label>
-        <select
-          name="instock"
-          value={inStockSelect}
-          onChange={(e) => {
-            const inStock = Number(e.target.value);
-            // const inStock = Boolean(changeIt);
-            setInStockSelect(inStock);
-
-            // mongoose casts number and no as true or false, so I am going to use mongoose style. though I want to
-            // see this one too.
-          }}
-        >
-          <option value={1}>YES</option>
-          <option value={0}>NO</option>
-        </select>
-      </div>
       <div>
         <input
+          // value={priceInput}
+          // value={priceValue}
           type="number"
           placeholder="PRICE"
           id="product-price"
@@ -395,20 +405,20 @@ const AdminPostForm = () => {
         </select>
         {discountSelect === "YES" && (
           <input
+            // value={discountInput}
+            // value={discountValue}
             ref={discountRef}
             type="number"
             placeholder="DISCOUNT PRICE"
             id="product-discount-price"
             name="discount-price"
             onChange={handleChangeInputDiscount}
-            onBlur={handleDiscountBlur}
           />
         )}
       </div>
-
-      {/* description */}
       <div>
         <textarea
+          // value={descriptionValue}
           type="text"
           placeholder="description"
           id="description"
@@ -416,7 +426,6 @@ const AdminPostForm = () => {
           maxLength={200}
           minLength={2}
           rows={5}
-          ref={descriptionRef}
           onChange={handleChangeInputDescription}
         ></textarea>
       </div>
@@ -437,8 +446,7 @@ const AdminPostForm = () => {
         <ActionButton
           userAction="upload"
           className={styles.cursor}
-          disable={{ disabled, isLoading }}
-          // disable={disabled}
+          disable={disabled}
         ></ActionButton>
       </div>
 

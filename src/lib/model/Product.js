@@ -21,7 +21,6 @@ const schemaOptions = {
   discountPrice: {
     type: Number,
     set: (value) => {
-      // console.log(value);
       if (value === null) {
         return 0;
       }
@@ -56,6 +55,10 @@ const schemaOptions = {
   },
 
   slug: String,
+  inStock: {
+    type: Boolean,
+    default: true,
+  },
 };
 
 // creating schema

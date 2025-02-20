@@ -4,6 +4,7 @@ import ProductDescription from "@/components/ProductDescription/ProductDescripti
 import { getProduct } from "@/lib/data/productData";
 const page = async ({ params, searchParams }) => {
   const { slug } = await params;
+
   const product = await getProduct(slug);
 
   return (

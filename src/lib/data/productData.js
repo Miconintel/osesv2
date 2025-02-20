@@ -29,8 +29,8 @@ export const deleteProduct = async (id) => {
   try {
     connectDb();
     const product = await Product.findByIdAndDelete(id);
-    console.log(product);
-    console.log("successful delete");
+    // console.log(product);
+    // console.log("successful delete");
     return { message: "deleted successfully" };
   } catch (err) {
     console.log(err);

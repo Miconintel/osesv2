@@ -62,6 +62,7 @@ body {
     sans-serif;
   color: var(--color-primary);
 }
+
 .grid-container {
   display: grid;
   grid-template-columns:

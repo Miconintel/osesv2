@@ -30,7 +30,7 @@ const ProductDescription = async ({ product }) => {
         <span>Available</span>: <span>in-stock</span>
       </p>
 
-      <ProductDescriptionAction />
+      <ProductDescriptionAction product={product} />
     </div>
   );
 };

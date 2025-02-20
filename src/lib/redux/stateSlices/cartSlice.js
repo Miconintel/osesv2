@@ -11,9 +11,8 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      // console.log(action.payload);
-      // console.log("clicked");
       state.cart.push(action.payload);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     removeItem(state, action) {
       state.cart = state.cart.filter(
@@ -38,14 +37,13 @@ export const cartSlice = createSlice({
           (cart) => cart.product.id !== payload.id
         );
       }
-      // console.log(cartItem.quantity);
     },
   },
 });
 
 export const getTotalQuantity = (state) => {
   const cart = state.cartReducer.cart;
-  // console.log(cart);
+
   const getTotal = cart.reduce((acc, cart) => {
     return acc + cart.quantity;
   }, 0);
@@ -55,11 +53,10 @@ export const getTotalQuantity = (state) => {
 
 export const getCartQuantity = function (product) {
   return function (state) {
-    // console.log(state.cartReducer.cart);
     const cartItem = state.cartReducer.cart.find((cart) => {
       return cart.product.id === product.id;
     });
-    // console.log(cartItem);
+
     return cartItem?.quantity || 0;
   };
 };

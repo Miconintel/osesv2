@@ -44,7 +44,9 @@ const AdminPostsItem = async ({ product }) => {
     <tr className={styles.row}>
       <td className={styles.name}>{product.name}</td>
       <td className={styles.price}>${product.price}</td>
-      <td className={styles.availability}>available</td>
+      <td className={styles.availability}>
+        {product.inStock ? "availabe" : "out of stock"}
+      </td>
       <td>
         <form
           className={styles.action}

@@ -12,7 +12,7 @@ export const POST = async (request, { params }) => {
     const formData = await request.formData();
     // texts
 
-    const { name, category, description, image, price, discount } =
+    const { name, category, description, price, discount, image, instock } =
       Object.fromEntries(formData);
 
     // files
@@ -47,11 +47,12 @@ export const POST = async (request, { params }) => {
         .jpeg({ quality: 100 })
         .toBuffer();
 
-      const blob = await put(theName, fileFormat, {
+      const { url } = await put(theName, fileFormat, {
         access: "public",
       });
 
-      return theName;
+      // return theName;
+      return url;
     };
 
     // handling file
@@ -71,6 +72,7 @@ export const POST = async (request, { params }) => {
       category,
       description,
       price: priceNumber,
+      inStock: instock,
       discountPrice: discountNumber || null,
       coverImage: fileName || null,
     };
@@ -79,7 +81,7 @@ export const POST = async (request, { params }) => {
 
     return NextResponse.json(
       {
-        // data,
+        data,
         message: "successfully uploaded",
       },
       { status: 200 }

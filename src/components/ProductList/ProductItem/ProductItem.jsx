@@ -17,11 +17,12 @@ const ProductItem = async ({ product }) => {
     promo,
     ratingsAverage,
     coverImage,
-    slug,
     id,
   } = product;
   // console.log(id);
-  const imageSrc = await getBlobImage(coverImage);
+
+  // this is not necessary since bucket is created and hosted at the backend
+  // const imageSrc = await getBlobImage(coverImage);
 
   return (
     <li className={styles.item}>
@@ -30,7 +31,8 @@ const ProductItem = async ({ product }) => {
           <Image
             alt={name + category}
             // src={coverImage ? `/images/${coverImage}` : "/placeholder.jpg"}
-            src={imageSrc || "/images/placeholder.jpg"}
+            // src={imageSrc || "/images/placeholder.jpg"}
+            src={coverImage || "/images/placeholder.jpg"}
             fill
             className={styles.img}
           />

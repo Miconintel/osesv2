@@ -2,7 +2,6 @@
 
 import React from "react";
 import styles from "./ProductDescriptionAction.module.css";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItem,
@@ -12,17 +11,7 @@ import {
 } from "@/lib/redux/stateSlices/cartSlice";
 import { getCartQuantity } from "@/lib/redux/stateSlices/cartSlice";
 
-const theProduct = {
-  id: 1,
-  name: "yam",
-  category: "tuber",
-  price: 24,
-  promo: 0,
-};
-
-const ProductDescriptionAction = () => {
-  const [quantity, setQuantity] = useState(0);
-  const [product, setProduct] = useState(theProduct);
+const ProductDescriptionAction = ({ product }) => {
   const dispatch = useDispatch();
 
   // selectors variables
@@ -31,13 +20,11 @@ const ProductDescriptionAction = () => {
 
   // variables
   const cartIsEmpty = cartQuantity === 0;
-  // const shouldDisable = cartQuantity < 1;
 
   const handleIncrease = function () {
     dispatch(increaseQuantity(product));
   };
   const handleDecrease = function () {
-    // setQuantity((curr) => curr - 1);
     dispatch(decreaseQuantity(product));
   };
   const handleAddToCart = function () {
@@ -67,11 +54,11 @@ const ProductDescriptionAction = () => {
       )}
       {cartIsEmpty ? (
         <button type="submit" onClick={handleAddToCart}>
-          ADD TO CART
+          Add to Cart
         </button>
       ) : (
         <button type="submit" onClick={handleRemoveCart}>
-          DELETE
+          Remove Item
         </button>
       )}
     </div>
