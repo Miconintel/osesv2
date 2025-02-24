@@ -10,21 +10,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  /* transition: all 2.5s ease-in-out; */
-  transition: all 1.5s ease-out;
-}
-
-.active {
-  transform: translateY(0);
-  animation: slide-in 4s;
-}
-
-.slideIn {
-  animation: slide-in 4s;
-}
-
-.slideOut {
-  animation: slide-out 10s;
+  display: inline-block;
+  transition: all 0.4s ease-in;
 }
 
 .img {
@@ -42,12 +29,9 @@
   display: flex;
   justify-content: space-between;
   z-index: 100;
-  /* margin: 0 auto; */
 }
 
 .chevronContainer p {
-  /* height: 12px;
-  width: 12px; */
   color: var(--color-white-brand);
   background-color: var(--color-secondary-light);
   padding: 4px 4px;
@@ -57,47 +41,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.1s;
 }
-
-.setO {
-  opacity: 0;
-}
-@keyframes slide-out {
-  0% {
-    transform: translateX(0%);
-  }
-  50% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-
-  /* 
-  from {
-    transform: translateX(-100%);
-  }
-
-  to {
-    transform: translateX(100%);
-  } */
-}
-
-@keyframes slide-in {
-  /* 0% {
-    transform: translateX(0%);
-  }
-  50% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  } */
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
+.chevronContainer p:hover {
+  border: 2px solid var(--color-secondary-light);
+  background: none;
+  color: var(--color-secondary-light);
 }

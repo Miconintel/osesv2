@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useRef } from "react";
-import Image from "next/image";
-import styles from "./Hero.module.css";
 import NavIntersectionObserver from "../Providers/ObserverProviders/NavIntersectionObserver";
 import Carousel from "../carousel/Carousel";
+// import Image from "next/image";
+// import styles from "./Hero.module.css";
+import CarouselApi from "../CarouselApi/CarouselApi";
 
 //
 //
@@ -23,7 +24,8 @@ const Hero = () => {
           alt="image of groceries on bag"
         />
       </div> */}
-      <Carousel refm={heroRef} />
+      {/* <Carousel refm={heroRef} /> */}
+      <CarouselApi refm={heroRef} />
     </NavIntersectionObserver>
   );
 
