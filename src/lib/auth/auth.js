@@ -79,7 +79,6 @@ export const providerMap = providers.reduce((prev, provider, i) => {
 
     newArray.push(providerDetail);
   }
-  // console.log(prev);
   return newArray;
 }, []);
 

@@ -1,3 +1,9 @@
+// after the last item from the arrays of images moves out of the screen, the duplicate
+// item should move in, so that the carousel image can return to the first positions by updating the
+// the tracker state using the on transition end event listener
+// as soon as the even listener is triggered, the transition is removed on all the images and tracker updated
+// also causing the duplicate images to return back to their original position.
+// while the duplicate images return back to its original postion, the transition of the duplicate images is removed too.
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./CarouselApi.module.css";
 import Image from "next/image";
@@ -24,18 +30,6 @@ const imgObj = [
     width: 500,
     height: 500,
   },
-  // {
-  //   src: "/hero-1.jpg",
-  //   alt: "image of groceries on bag",
-  //   width: 500,
-  //   height: 500,
-  // },
-  // {
-  //   src: "/hero-2.jpg",
-  //   alt: "image of groceries on bag",
-  //   width: 500,
-  //   height: 500,
-  // },
 ];
 
 const imgObj2 = ["/hero-1.jpg", "/hero-2.jpg", "/hero-3.jpg"];
@@ -162,6 +156,7 @@ const Carousel = ({ refm }) => {
     );
   });
 
+  // TRANSFORM,  TRANSITION AND STYLE FOR THE FIRST DUPLICATE
   // calculate transform
 
   const theTransform = tracker === imgObj.length ? 0 : 100;
@@ -176,6 +171,7 @@ const Carousel = ({ refm }) => {
     transition: `${transitionAction}`,
   };
 
+  // TRANSFORM TRANSITION AND STYLE FOR THE LAST DUPLICATE
   //
   const theTransformLast = tracker === -1 ? 0 : -100;
 
@@ -188,6 +184,7 @@ const Carousel = ({ refm }) => {
     transition: `${transitionActionLast}`,
   };
 
+  //
   return (
     <div className={styles.container} ref={refm}>
       <div className={styles.chevronContainer}>
@@ -198,6 +195,7 @@ const Carousel = ({ refm }) => {
           <HiOutlineChevronDoubleRight />
         </p>
       </div>
+      {/* ORIGINAL IMAGES */}
       {images}
       {/* front duplicate */}
       <div className={`${styles.imageWrapper} `} style={inStyle}>

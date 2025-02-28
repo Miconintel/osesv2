@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import styles from "./error.module.css";
 
 const Error = ({ error, reset }) => {
-  console.log(error);
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
