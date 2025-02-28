@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import NavIntersectionObserver from "../Providers/ObserverProviders/NavIntersectionObserver";
-import Carousel from "../Carousel/Carousel";
+// import Carousel from "../Carousel/Carousel";
 // import Image from "next/image";
 // import styles from "./Hero.module.css";
 import CarouselApi from "../CarouselApi/CarouselApi";
@@ -24,8 +24,8 @@ const Hero = () => {
           alt="image of groceries on bag"
         />
       </div> */}
-      {/* <Carousel refm={heroRef} />
-      <CarouselApi refm={heroRef} /> */}
+      {/* <Carousel refm={heroRef} /> */}
+      <CarouselApi refm={heroRef} />
     </NavIntersectionObserver>
   );
 
