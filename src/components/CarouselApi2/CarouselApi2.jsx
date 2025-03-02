@@ -5,7 +5,7 @@
 // also causing the duplicate images to return back to their original position.
 // while the duplicate images return back to its original postion, the transition of the duplicate images is removed too.
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./CarouselApi.module.css";
+import styles from "./CarouselApi2.module.css";
 import Image from "next/image";
 import { HiOutlineChevronDoubleRight } from "react-icons/hi2";
 import { HiOutlineChevronDoubleLeft } from "react-icons/hi2";
@@ -24,36 +24,65 @@ const imgObj = [
     width: 500,
     height: 500,
   },
+  // {
+  //   src: "/hero-3.jpg",
+  //   alt: "image of groceries on bag",
+  //   width: 500,
+  //   height: 500,
+  // },
+  // {
+  //   src: "/hero-4.jpg",
+  //   alt: "image of groceries on bag",
+  //   width: 500,
+  //   height: 500,
+  // },
   {
-    src: "/hero-3.jpg",
+    src: "/hero-1.jpg",
     alt: "image of groceries on bag",
     width: 500,
     height: 500,
   },
+  {
+    src: "/hero-2.jpg",
+    alt: "image of groceries on bag",
+    width: 500,
+    height: 500,
+  },
+  // {
+  //   src: "/hero-3.jpg",
+  //   alt: "image of groceries on bag",
+  //   width: 500,
+  //   height: 500,
+  // },
+  // {
+  //   src: "/hero-4.jpg",
+  //   alt: "image of groceries on bag",
+  //   width: 500,
+  //   height: 500,
+  // },
 ];
 
-const imgObj2 = ["/hero-1.jpg", "/hero-2.jpg", "/hero-3.jpg"];
+// const imgObj2 = ["/hero-1.jpg", "/hero-2.jpg", "/hero-3.jpg"];
 
-const CarouselApi = ({ refm }) => {
+const CarouselApi2 = ({ refm }) => {
   const [tracker, setTracker] = useState(0);
   const counterRef = useRef();
+
+  // cubic-bezier(0.39, 0.575, 0.565, 1)
 
   const handleForward = useCallback(
     function handleForward() {
       clearInterval(counterRef.current);
-      const moveForward = tracker < imgObj.length;
+      const moveForward = tracker < imgObj.length / 2;
 
-      // if (moveForward) {
-      //   setTracker((tracker) => tracker + 1);
-      // } else {
-      //   setTracker(1);
-      // }
       if (moveForward) {
         const elements = [...refm?.current.querySelectorAll("#used")];
         elements.forEach((el) => {
-          el.style.transition = "all 0.4s ease-in";
+          el.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
         });
         setTracker((tracker) => tracker + 1);
+      } else {
+        return;
       }
     },
     [refm, tracker]
@@ -62,12 +91,6 @@ const CarouselApi = ({ refm }) => {
   useEffect(
     function () {
       counterRef.current = setInterval(() => {
-        // const moveForward = tracker < imgObj.length - 1;
-        // if (moveForward) {
-        //   setTracker((tracker) => tracker + 1);
-        // } else {
-        //   setTracker(0);
-        // }
         handleForward();
       }, 5000);
 
@@ -79,27 +102,22 @@ const CarouselApi = ({ refm }) => {
   );
 
   const handleTransitionEnd = (e) => {
-    if (tracker === imgObj.length) {
-      // const element = e.target;
+    if (tracker === imgObj.length / 2) {
       const elements = [...refm?.current.querySelectorAll("#used")];
       elements.forEach((el) => {
         el.style.transition = "none";
       });
-
       setTracker(0);
     } else if (tracker === -1) {
       const elements = [...refm?.current.querySelectorAll("#used")];
       elements.forEach((el) => {
         el.style.transition = "none";
       });
-      setTracker(imgObj.length - 1);
+      setTracker(imgObj.length / 2 - 1);
     }
   };
 
   const handleBackward = () => {
-    //
-
-    //
     //
 
     clearInterval(counterRef.current);
@@ -107,27 +125,16 @@ const CarouselApi = ({ refm }) => {
     if (moveBackward) {
       const elements = [...refm?.current.querySelectorAll("#used")];
       elements.forEach((el) => {
-        el.style.transition = "all 0.4s ease-in";
+        el.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
       });
       setTracker((tracker) => tracker - 1);
     }
-    // if (moveBackward) {
-    //   setTracker((tracker) => tracker - 1);
-    // } else {
-    //   setTracker(imgObj.length - 1);
-    // }
   };
 
   //   generator
 
   const images = imgObj.map((img, index) => {
     const currentIndex = index - tracker;
-    // const lastIndex = tracker === imgObj.length - 1;
-    // const firstIndex = tracker === 0;
-
-    // generateTransiton
-
-    // const theTransition = tracker === 0 ? "none" : "all 0.4s ease-in";
 
     const inStyle = {
       transform: `translateX(${currentIndex * 100}%)`,
@@ -159,17 +166,17 @@ const CarouselApi = ({ refm }) => {
   // TRANSFORM,  TRANSITION AND STYLE FOR THE FIRST DUPLICATE
   // calculate transform
 
-  const theTransform = tracker === imgObj.length ? 0 : 100;
+  // const theTransform = tracker === imgObj.length ? 0 : 100;
 
-  // calculate transition
+  // // calculate transition
 
-  const transitionAction =
-    tracker == imgObj.length ? "all 0.4s ease-in" : "none";
+  // const transitionAction =
+  //   tracker == imgObj.length ? "all 0.4s ease-out" : "none";
 
-  const inStyle = {
-    transform: `translateX(${theTransform}%)`,
-    transition: `${transitionAction}`,
-  };
+  // const inStyle = {
+  //   transform: `translateX(${theTransform}%)`,
+  //   transition: `${transitionAction}`,
+  // };
 
   // TRANSFORM TRANSITION AND STYLE FOR THE LAST DUPLICATE
   //
@@ -177,7 +184,8 @@ const CarouselApi = ({ refm }) => {
 
   // calculate transition
 
-  const transitionActionLast = tracker == -1 ? "all 0.4s ease-in" : "none";
+  const transitionActionLast =
+    tracker == -1 ? "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "none";
 
   const inStyleLast = {
     transform: `translateX(${theTransformLast}%)`,
@@ -198,7 +206,7 @@ const CarouselApi = ({ refm }) => {
       {/* ORIGINAL IMAGES */}
       {images}
       {/* front duplicate */}
-      <div className={`${styles.imageWrapper} `} style={inStyle}>
+      {/* <div className={`${styles.imageWrapper} `} style={inStyle}>
         <Image
           className={styles.img}
           src={imgObj[0].src}
@@ -206,7 +214,7 @@ const CarouselApi = ({ refm }) => {
           width={500}
           height={500}
         />
-      </div>
+      </div> */}
       {/* back duplicate */}
       <div className={`${styles.imageWrapper} `} style={inStyleLast}>
         <Image
@@ -221,7 +229,7 @@ const CarouselApi = ({ refm }) => {
   );
 };
 
-export default CarouselApi;
+export default CarouselApi2;
 
 //
 //

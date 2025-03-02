@@ -5,7 +5,8 @@ import NavIntersectionObserver from "../Providers/ObserverProviders/NavIntersect
 // import Carousel from "../Carousel/Carousel";
 // import Image from "next/image";
 // import styles from "./Hero.module.css";
-import CarouselApi from "../CarouselApi/CarouselApi";
+// import CarouselApi from "../CarouselApi/CarouselApi";
+import CarouselApi2 from "../CarouselApi2/CarouselApi2";
 
 //
 //
@@ -24,8 +25,10 @@ const Hero = () => {
           alt="image of groceries on bag"
         />
       </div> */}
+
       {/* <Carousel refm={heroRef} /> */}
-      <CarouselApi refm={heroRef} />
+      {/* <CarouselApi refm={heroRef} /> */}
+      <CarouselApi2 refm={heroRef} />
     </NavIntersectionObserver>
   );
 
