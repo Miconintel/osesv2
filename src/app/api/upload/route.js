@@ -1,3 +1,5 @@
+// YET TO BE SECURED.
+
 import { Buffer } from "node:buffer";
 import { NextResponse } from "next/server";
 import sharp from "sharp";
@@ -25,17 +27,6 @@ export const POST = async (request, { params }) => {
       // writefile
 
       const theName = `${uuidv4()}.jpg`;
-
-      // THIS IS FOR SAVING IT IN A LOCAL FILE
-      // const fileFormat = await sharp(fileBuffer)
-      //   .resize(300, 300, {
-      //     width: 300,
-      //     height: 300,
-      //     fit: "cover",
-      //   })
-      //   .toFormat("jpeg")
-      //   .jpeg({ quality: 100 })
-      //   .toFile(path.join(process.cwd(), `public/images/${theName}`));
 
       const fileFormat = await sharp(fileBuffer)
         .resize(300, 300, {
@@ -66,7 +57,6 @@ export const POST = async (request, { params }) => {
     //
     // db connect
     connectDb();
-
     const document = {
       name,
       category,
@@ -78,6 +68,8 @@ export const POST = async (request, { params }) => {
     };
 
     const data = await Product.create(document);
+
+    // revalidatePath("/admin/products"); // Update cached posts
 
     return NextResponse.json(
       {

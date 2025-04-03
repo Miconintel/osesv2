@@ -32,7 +32,7 @@ const passwordCount = z
     path: ["password"], // path of error
   });
 
-// validationg passswordstarts
+// validationg passswordstarts matches
 const passwordForm = z
   .object({
     password: z.string({
@@ -48,9 +48,8 @@ const passwordForm = z
   });
 
 const registerAction = async function (prev, formData) {
+  let toReturn = { ...prev };
   try {
-    let toReturn = { ...prev };
-
     const { email, password, confirmPassword } = Object.fromEntries(formData);
 
     // checking if email is valid
@@ -110,32 +109,55 @@ const registerAction = async function (prev, formData) {
   } catch (err) {
     // aut
     if (err.code === 8000) {
-      console.log(err.errmsg);
-      const errMessage = { ...prev };
-      errMessage.message = "Something went wrong, it is our fault";
-      return errMessage;
+      // const errMessage = { ...prev };
+      // errMessage.message = "Something went wrong, it is our fault";
+      // return errMessage;
+
+      toReturn = {
+        ...toReturn,
+        message: "Something went wrong, it is our fault",
+      };
+
+      return toReturn;
     }
     // duplicate
     if (err.code === 11000) {
-      console.log(err.errmsg);
-      const errMessage = { ...prev };
+      // const errMessage = { ...prev };
+      // errMessage.message = `${key} already exists, try logging in`;
+      // return errMessage;
+
       const key = Object.keys(err.keyPattern)[0];
-      errMessage.message = `${key} already exists, try logging in`;
-      return errMessage;
+      const theMessage = `${key} already exists, try logging in`;
+      toReturn = {
+        ...toReturn,
+        message: theMessage,
+      };
+
+      return toReturn;
     }
     // timeout
     if (err.code === "ETIMEOUT") {
-      const errMessage = { ...prev };
-      errMessage.message = "no internet: check your internet connection";
-      return errMessage;
+      // const errMessage = { ...prev };
+      // errMessage.message = "no internet: check your internet connection";
+      // return errMessage;
+
+      toReturn = {
+        ...toReturn,
+        message: "check your internet",
+      };
+
+      return toReturn;
     }
 
-    console.log(err);
-
-    return {
-      ...prev,
+    toReturn = {
+      ...toReturn,
       message: "something went wrong ",
     };
+    return toReturn;
+    // return {
+    //   ...toReturn,
+    //   message: "something went wrong ",
+    // };
   }
 };
 

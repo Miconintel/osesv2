@@ -14,7 +14,6 @@ import styles from "./AdminPosts.module.css";
 
 const AdminPosts = async () => {
   const products = await getProducts();
-  // console.log(products);
   const itemJsx = products.map((product) => (
     <AdminPostsItem product={product} key={product.id}></AdminPostsItem>
   ));

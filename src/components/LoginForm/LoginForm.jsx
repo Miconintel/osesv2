@@ -36,18 +36,18 @@ const LoginForm = () => {
       <div>
         {/* <label for="password">Password</label> */}
         <input
-          type="password"
+          // type="password"
           id="password"
           placeholder="PASSWORD"
           name="password"
         />
       </div>
       <div>
-        {/* <button type="submit">Login</button> */}
-        <ActionButton
+        <button type="submit">Login</button>
+        {/* <ActionButton
           userAction="Login"
           className={styles.cursor}
-        ></ActionButton>
+        ></ActionButton> */}
       </div>
       <Link href="/register" className={styles.redirect}>
         <span className={styles.tag}>Do not have account </span>

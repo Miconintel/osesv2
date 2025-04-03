@@ -43,7 +43,6 @@ const NavIntersectionObserver = ({
         myObserver = observer;
         const currentEntry = entry[0];
         const intersecting = currentEntry?.isIntersecting;
-        // no longer using confirm home page
         const confirmHomePage = currentEntry?.rootBounds?.x > 0;
 
         if (!intersecting && confirmHomePage) {

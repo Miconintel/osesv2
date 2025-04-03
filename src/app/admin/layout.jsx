@@ -1,11 +1,11 @@
 import React from "react";
 import MiniNav from "@/components/MiniNav/MiniNav";
 
-const layout = ({ children, products }) => {
+const layout = ({ children }) => {
   return (
     <>
+      <MiniNav />
       {children}
-      {products}
     </>
   );
 };

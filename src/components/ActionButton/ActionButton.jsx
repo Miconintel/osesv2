@@ -4,8 +4,6 @@ import React from "react";
 // import { useFormStatus } from "react-dom";
 
 const ActionButton = ({ userAction, className, disable }) => {
-  // const data = useFormStatus();
-  // const { pending } = data;
   const { disabled, isLoading } = disable;
 
   return (

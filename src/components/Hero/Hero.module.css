@@ -1,14 +1,14 @@
-.imgContainer {
-  min-height: 100vh;
+.heroContainer {
+  /* min-height: 100vh; */
   height: 85vh;
   width: 100%;
   position: relative;
+  /* for the chevrons */
   grid-column: full-start / full-end;
   /* the relative parent is the grid container too. */
 }
 .img {
   object-fit: cover;
-  /* uses the grid container as the relative parent  */
 }
 
 @media only screen and (max-width: 65em) {
@@ -22,7 +22,7 @@
 }
 @media only screen and (max-width: 32em) {
   /* big phone screens */
-  .imgContainer {
+  .heroContainer {
     min-height: 80vh;
     height: 80vh;
   }

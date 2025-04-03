@@ -2,6 +2,8 @@ import styles from "./page.module.css";
 import DetailImage from "@/components/DetailImage/DetailImage";
 import ProductDescription from "@/components/ProductDescription/ProductDescription";
 import { getProduct } from "@/lib/data/productData";
+
+// check
 const page = async ({ params, searchParams }) => {
   const { slug } = await params;
 

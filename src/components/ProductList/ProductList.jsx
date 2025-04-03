@@ -4,7 +4,6 @@ import { getProducts } from "@/lib/data/productData";
 import styles from "./ProductList.module.css";
 
 //
-//
 // const products = [
 //   {
 //     name: "product",
@@ -129,21 +128,21 @@ import styles from "./ProductList.module.css";
 //
 //
 const ProductList = async () => {
-  try {
-    // this is getting data for this route.
-    const productLoad = await getProducts();
+  // this is getting data for this route.
+  const productLoad = await getProducts();
 
-    const productMap = productLoad?.map((product, i) => {
-      return <ProductItem key={i} product={product} />;
-    });
+  const productMap = productLoad?.map((product, i) => {
+    return <ProductItem key={i} product={product} />;
+  });
 
-    // //   return jsx
-    if (productMap.length == 0)
-      return <h3>THERE ARE NO PRODUCTS AVAILABLE NOW!!!</h3>;
-    return <ul className={styles.list}>{productMap}</ul>;
-  } catch (e) {
-    console.log(e);
-  }
+  // //   return jsx
+  if (productMap.length == 0)
+    return <h3>THERE ARE NO PRODUCTS AVAILABLE NOW!!!</h3>;
+  return (
+    <div className={styles.container}>
+      <ul className={styles.list}>{productMap}</ul>
+    </div>
+  );
 };
 
 export default ProductList;

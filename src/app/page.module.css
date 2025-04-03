@@ -1,7 +1,7 @@
 .container {
   grid-column: cont-start / cont-end;
   font-size: var(--font-primary);
-  padding: 12rem 0;
+  /* padding: 12rem 0; */
   transition: all 0.5s ease-in;
 }
 
@@ -12,9 +12,9 @@
   /* … */
 }
 @media only screen and (max-width: 52em) {
-  .container {
+  /* .container {
     padding: 4rem 0;
-  }
+  } */
 
   /* … */
 }

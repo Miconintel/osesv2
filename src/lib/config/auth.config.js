@@ -32,6 +32,7 @@ export const authConfig = {
       if (isLoggedIn && loginUrl) {
         return NextResponse.redirect(new URL("/", request?.nextUrl));
       }
+      // return false when it is admin url and the person is not logged in.
       if (!isLoggedIn && adminUrl) {
         return false;
       }

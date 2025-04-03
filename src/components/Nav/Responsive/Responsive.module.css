@@ -6,6 +6,7 @@
   width: 100%;
   background-color: var(--color-secondary);
   transition: all 1s ease-in;
+  display: none;
 }
 
 .effect {
@@ -18,13 +19,14 @@
 }
 
 /* small screen first screen first */
+/* one way to do it if you are doing mobile first */
 
-@media only screen and (min-width: 52em) {
-  /* … */
+/* @media only screen and (min-width: 52em) {
+
   .drop {
     display: none;
   }
-}
+} */
 
 /* LARGE SCREEN FIRST */
 
@@ -33,13 +35,19 @@
 }
 @media only screen and (max-width: 52em) {
   /* … */
+  .drop {
+    display: block;
+  }
 }
 @media only screen and (max-width: 32em) {
-  .drop {
+  /* .drop {
     height: 50vh;
-  }
+  } */
   /* … */
 }
 @media only screen and (max-width: 22em) {
   /* … */
+  .drop {
+    height: 50vh;
+  }
 }

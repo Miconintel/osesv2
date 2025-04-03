@@ -1,3 +1,8 @@
+.container {
+  width: 100%;
+  padding: 12rem 0;
+}
+
 .list {
   list-style: none;
   display: grid;

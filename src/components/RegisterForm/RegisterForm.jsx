@@ -14,7 +14,7 @@ const initialState = {
 
 const RegisterForm = () => {
   const [state, formAction] = useFormState(registerAction, initialState);
-  // const [messageState, setMessageState] = useState(null);
+
   const [tempMessage, setTemp] = useState(null);
 
   const turnOffMessage = (e) => {
@@ -61,12 +61,12 @@ const RegisterForm = () => {
           name="confirmPassword"
         />
       </div>
-      {/* <div>
-        <button type="submit">Register</button>
-      </div> */}
       <div>
-        <ActionButton userAction="Register" />
+        <button type="submit">Register</button>
       </div>
+      {/* <div>
+        <ActionButton userAction="Register" />
+      </div> */}
 
       <Link href="/login" className={styles.redirect}>
         <span className={styles.tag}> Already has an account </span>

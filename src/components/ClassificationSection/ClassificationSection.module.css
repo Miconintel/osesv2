@@ -1,0 +1,15 @@
+.container {
+  padding: 12rem 0;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.left {
+  background-color: yellow;
+}
+.right {
+  background-color: green;
+}

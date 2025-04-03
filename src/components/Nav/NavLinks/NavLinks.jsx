@@ -11,7 +11,6 @@ import { getTotalQuantity } from "@/lib/redux/stateSlices/cartSlice";
 import Cart from "@/components/Cart/Cart";
 
 const NavLinks = ({ session }) => {
-  // const [state, setState] = useState();
   const pathname = usePathname();
   const totalCartQuantiy = useSelector(getTotalQuantity);
 
@@ -47,8 +46,8 @@ const NavLinks = ({ session }) => {
           {isAdmin && (
             <li>
               <Link
-                href="/admin/products"
-                className={pathname === "/admin/products" ? styles.action : ""}
+                href="/admin"
+                className={pathname === "/admin" ? styles.action : ""}
               >
                 Admin
               </Link>

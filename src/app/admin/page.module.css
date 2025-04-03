@@ -1,9 +1,13 @@
 .container {
+  height: 80vh;
   grid-column: col-start 2 / cont-end;
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  justify-items: center;
+  justify-items: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 4rem 0;
 }
 
@@ -12,18 +16,10 @@
     grid-column: cont-start / cont-end;
     grid-template-columns: repeat(1, 1fr);
   }
-
-  /* … */
 }
 @media only screen and (max-width: 52em) {
-  /* .container {
-    grid-template-columns: repeat(1, 1fr);
-  } */
-  /* … */
 }
 @media only screen and (max-width: 32em) {
-  /* … */
 }
 @media only screen and (max-width: 22em) {
-  /* … */
 }

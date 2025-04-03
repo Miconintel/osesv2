@@ -1,22 +1,18 @@
-// import classes from "./admin.module.css";
-// import AdminPostForm from "@/components/AdminPostForm/AdminPostForm";
-
 // const admin = () => {
-//   return (
-//     <main className={classes.container}>
-//       <AdminPostForm />
-//     </main>
-//   );
+//   return null;
 // };
 
 // export default admin;
+import React from "react";
+import styles from "./page.module.css";
 
-import classes from "./admin.module.css";
-import AdminPostForm from "@/components/AdminPostForm/AdminPostForm";
-import { redirect } from "next/navigation";
-
-const admin = () => {
-  return null;
+//
+const page = () => {
+  return (
+    <div className={styles.container}>
+      <h2>THIS PAGE IS UNDER CONSTRUCTION</h2>
+    </div>
+  );
 };
 
-export default admin;
+export default page;

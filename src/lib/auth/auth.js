@@ -54,11 +54,12 @@ const providers = [
         if (e.name === "MongoServerSelectionError") {
           throw e;
         }
-        // if the error is mongo server selection, then the next auth login, should see it, and
-        // that is why I am throwing the error. else, I wont throw it and the next auth login will tag it
-        // credential error
-        // I caught the error, but dont want to throw it, so thay I can see the credential sign in error.
-        // if I throw it , I am going to have to see callback error issue instead of credential sign in err.
+        // if the error is mongo server selection, then the next auth login, should see it as a callback error, and
+        // that is why I am throwing the error. else, I wont throw it and the next auth login will tag it credential error
+        // it is an internet error.
+
+        //I caught the error, but dont want to throw it, so thay I can see the credential sign in error.
+        // if I throw it, I am going to have to see callback error issue instead of credential sign in err.
         // throw e;
         // throwing this error, you can catch it at the actions and handle there, I prefer here.
       }

@@ -1,3 +1,10 @@
+.parentContainer {
+  width: 100%;
+  height: 100vh;
+  padding-top: 12rem;
+  /* background-color: red; */
+}
+
 .container {
   position: relative;
   overflow: hidden;
@@ -5,22 +12,18 @@
   height: 100%;
 }
 
-.imageWrapper {
+.detailContainer {
   position: absolute;
   height: 100%;
-}
-
-.wrapperMargin {
+  width: 25%;
   padding: 0 2rem;
 }
 
-.bigWidth {
+.imageWrapper {
+  /* position: absolute; */
+  height: 50%;
   width: 100%;
-}
-
-.smallWidth {
-  width: 20%;
-  /* padding-right: 2rem; */
+  /* padding-left: 2rem; */
 }
 
 .img {
@@ -58,10 +61,8 @@
   color: var(--color-secondary-light);
 }
 
-/* special case */
-
 @media only screen and (max-width: 75em) {
-  .smallWidth {
+  .detailContainer {
     width: 50%;
     /* padding-right: 2rem; */
   }
@@ -72,7 +73,7 @@
   /* … */
 }
 @media only screen and (max-width: 52em) {
-  .smallWidth {
+  .detailContainer {
     width: 100%;
     /* padding-right: 2rem; */
   }

@@ -6,7 +6,7 @@ import classes from "./MiniNavLinks.module.css";
 import { usePathname } from "next/navigation";
 
 const linkItem = [
-  { id: 1, content: "Summary", href: "/admin/summary" },
+  { id: 1, content: "Summary", href: "/admin" },
   { id: 2, content: "Products", href: "/admin/products" },
   { id: 3, content: "Orders", href: "/admin/orders" },
   // { id: 4, content: "Users", href: "/admin/users" },

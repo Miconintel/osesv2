@@ -4,6 +4,7 @@ import styles from "./AdminPostForm.module.css";
 import ActionButton from "../ActionButton/ActionButton";
 import { useReducer } from "react";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 // initialStat
 
@@ -102,9 +103,9 @@ const reducerFunction = function (prevState, action) {
 const AdminPostForm = () => {
   // state
   // these are independent states.
+  const router = useRouter();
   const [disabled, setDisabled] = useState(true);
   const [message, setMessage] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
 
   // selects
   const [discountSelect, setDiscountSelect] = useState("NO");
@@ -158,7 +159,7 @@ const AdminPostForm = () => {
   //
   //
   useEffect(() => {
-    setMessage("");
+    // setMessage("");
 
     if (nameInput && categoryInput && priceInput && upload) {
       setDisabled(false);
@@ -183,7 +184,6 @@ const AdminPostForm = () => {
   const handleChangeInputCategory = (e) => {
     const target = e.target;
     const categoryInputf = target.value;
-
     const actionObject = { type: "cat", payload: categoryInputf };
     action(actionObject);
     categoryRef.current.style.border = "none";
@@ -251,7 +251,7 @@ const AdminPostForm = () => {
 
   const handlePriceBlur = () => {
     const element = priceRef.current;
-    console.log(element.classList.toggle("inputerror"));
+    // console.log(element.classList.toggle("inputerror"));
     const isValid = priceInput > 0;
 
     if (!isValid) {
@@ -280,10 +280,9 @@ const AdminPostForm = () => {
   //
 
   const handleSubmit = async (e) => {
-    console.log(inStockSelect);
+    // console.log(inStockSelect);
     e.preventDefault();
     action({ type: "loading", payload: null });
-    // setIsLoading(true);
 
     try {
       const formData = new FormData();
@@ -311,6 +310,9 @@ const AdminPostForm = () => {
       if (data) {
         action({ type: "clear", payload: null });
         setMessage("upload successful");
+        // console.log(uploadRef.current.value);
+        uploadRef.current.value = "";
+        router.refresh();
       }
     } catch (e) {
       setMessage(e.message);
@@ -329,6 +331,7 @@ const AdminPostForm = () => {
     >
       <div>
         <input
+          value={nameInput}
           type="text"
           placeholder="PRODUCT NAME"
           id="product-name"
@@ -341,6 +344,7 @@ const AdminPostForm = () => {
       </div>
       <div>
         <input
+          value={categoryInput}
           type="text"
           placeholder="CATEGORY"
           id="product-category"
@@ -373,6 +377,7 @@ const AdminPostForm = () => {
       <div>
         <input
           type="number"
+          value={priceInput}
           placeholder="PRICE"
           id="product-price"
           name="price"
@@ -396,6 +401,7 @@ const AdminPostForm = () => {
         {discountSelect === "YES" && (
           <input
             ref={discountRef}
+            value={discountInput}
             type="number"
             placeholder="DISCOUNT PRICE"
             id="product-discount-price"
@@ -409,6 +415,7 @@ const AdminPostForm = () => {
       {/* description */}
       <div>
         <textarea
+          value={descriptionInput}
           type="text"
           placeholder="description"
           id="description"
@@ -420,8 +427,11 @@ const AdminPostForm = () => {
           onChange={handleChangeInputDescription}
         ></textarea>
       </div>
+
+      {/* file upload */}
       <div>
         <input
+          // value={upload}
           ref={uploadRef}
           accept="image/*"
           type="file"
@@ -438,7 +448,6 @@ const AdminPostForm = () => {
           userAction="upload"
           className={styles.cursor}
           disable={{ disabled, isLoading }}
-          // disable={disabled}
         ></ActionButton>
       </div>
 

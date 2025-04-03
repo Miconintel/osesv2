@@ -1,9 +1,10 @@
 .container {
+  grid-column: col-start 2 / cont-end;
   height: 80vh;
-  grid-column: cont-start / cont-end;
   /* display: grid;
-  grid-template-columns: repeat(2, 1fr); */
-  /* justify-items: center; */
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center; */
   display: flex;
   align-items: center;
   justify-content: center;

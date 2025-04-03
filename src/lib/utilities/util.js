@@ -7,7 +7,7 @@ const url = process.env.DB?.replace("<password>", process.env.DB_PASS);
 
 export const connectDb = async function () {
   if (connected.connection) {
-    console.log("already connected");
+    // console.log("already connected");
     return;
   }
   try {
@@ -17,7 +17,7 @@ export const connectDb = async function () {
     });
     connected.connection = db.connections[0];
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     throw err;
   }
 };

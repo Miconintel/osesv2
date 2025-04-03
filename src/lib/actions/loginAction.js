@@ -12,7 +12,7 @@ const emailValidation = z
         invalid_type_error: "Invalid email",
       })
       .min(3, {
-        message: "minimum required",
+        message: "the email is invalid",
       }),
   })
   .refine((data) => validator.isEmail(data.email), {
@@ -21,7 +21,7 @@ const emailValidation = z
   });
 
 const LoginAction = async (prevState, formData) => {
-  let runFinally = true;
+  let runFinally = false;
   let toReturn = { ...prevState };
   const { email, password } = Object.fromEntries(formData);
 
@@ -38,7 +38,11 @@ const LoginAction = async (prevState, formData) => {
       return toReturn;
     }
 
-    await signIn("credentials", { email, password });
+    // adding the signIn in try and catch throw a redirect error.,it is not the best option, but I needed to
+    // send specific error. like internet errors to client. so I am taking this approach, of completing
+    // redirect in finally. feels wrong right? well, how can it be improved
+
+    const dataCheck = await signIn("credentials", { email, password });
 
     toReturn = {
       ...toReturn,
@@ -51,16 +55,15 @@ const LoginAction = async (prevState, formData) => {
     // called credential error to this place and it is called
     // credentials error
 
-    // if the error is from the authorize function, the error is thrown to the login, and the login throws it
-    // as a callback error
-    console.log(e);
+    // if the error is from the authorize function, the error is thrown to the login, and the login throws it as a callback error
 
-    if (e.message !== "NEXT_REDIRECT") {
-      // stop redirectiong from happening
-      runFinally = false;
-
+    if (e.message === "NEXT_REDIRECT") {
+      // this enables redirect, as it is an error returned from nextauth signIn function
+      runFinally = true;
+    } else {
       // handle network error/this error will be thrown from authorize and will bear the name
-      // credential sign in
+      // call back error.
+      // any other error would be a credential signin Error.which I called and did not handle meaning the authorize functioin will return null and it will throw a credential error
       if (e.name === "CallbackRouteError") {
         toReturn = {
           ...toReturn,
@@ -70,7 +73,7 @@ const LoginAction = async (prevState, formData) => {
 
         return toReturn;
       } else if (e.name === "CredentialsSignin") {
-        console.log(e.name);
+        // console.log(e.name);
         toReturn = {
           ...toReturn,
           success: false,
@@ -82,10 +85,9 @@ const LoginAction = async (prevState, formData) => {
         toReturn = {
           ...toReturn,
           success: false,
-          message: "something went wrong ,we are fixing it",
+          message: "something went wrong, we are fixing it",
         };
       }
-
       return toReturn;
     }
   } finally {
