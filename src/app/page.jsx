@@ -3,9 +3,10 @@ import Hero from '@/components/Hero/Hero';
 import VectorImages from '@/components/VectorImages/VectorImages';
 import Trending from '@/components/Trending/Trending';
 import ClassificationSection from '@/components/ClassificationSection/ClassificationSection';
+import HeroText from '@/components/Hero/HeroText/HeroText';
+
 // import ProductList from "@/components/ProductList/ProductList";
 
-// export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 //

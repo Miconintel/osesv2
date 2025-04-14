@@ -1,9 +1,9 @@
-"use client";
-import React from "react";
-import { useRef } from "react";
-import { Provider } from "react-redux";
-import { store, persistor } from "@/lib/redux/store";
-import { PersistGate } from "redux-persist/integration/react";
+'use client';
+import React from 'react';
+import { useRef } from 'react';
+import { Provider } from 'react-redux';
+import { store, persistor } from '@/lib/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 // import { persistor, store } from "./lib/store";
 
 const StoreProvider = ({ children }) => {
@@ -17,7 +17,9 @@ const StoreProvider = ({ children }) => {
 
   return (
     <Provider store={storeState.current}>
-      <PersistGate persistor={persistor}>{children}</PersistGate>
+      <PersistGate persistor={persistorState.current} loading={null}>
+        {children}
+      </PersistGate>
     </Provider>
   );
 };

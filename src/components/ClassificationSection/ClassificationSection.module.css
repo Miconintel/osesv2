@@ -4,12 +4,41 @@
 
 .gridContainer {
   display: grid;
+  grid-column-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  height: 36rem;
 }
 
-.left {
+.content {
+  overflow: hidden;
+}
+
+.content span {
+  position: absolute;
+  z-index: 1;
+}
+
+/* .left {
   background-color: yellow;
 }
-.right {
+
+.left span:hover {
+  color: red;
+} */
+
+/*  */
+
+/* .right {
   background-color: green;
+} */
+
+.imageContainer {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transition: all 0.4s;
+}
+
+.imageContainer:hover {
+  scale: 1.1;
 }

@@ -1,10 +1,10 @@
-import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
-import Credentials from "next-auth/providers/credentials";
-import { User } from "../model/User";
-import { connectDb } from "../utilities/util";
-import bcrypt from "bcryptjs";
-import { authConfig } from "../config/auth.config";
+import NextAuth from 'next-auth';
+import Google from 'next-auth/providers/google';
+import Credentials from 'next-auth/providers/credentials';
+import { User } from '../model/User';
+import { connectDb } from '../utilities/util';
+import bcrypt from 'bcryptjs';
+import { authConfig } from '../config/auth.config';
 
 // credentials authorize
 
@@ -16,7 +16,7 @@ const getUserFromDb = async (credentials) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      throw new Error("incorrect password or email");
+      throw new Error('incorrect password or email');
     }
 
     const passHash = user.password;
@@ -24,7 +24,7 @@ const getUserFromDb = async (credentials) => {
     const passWordCorrect = await bcrypt.compare(password, passHash);
 
     if (!passWordCorrect) {
-      throw new Error("incorrect email or password");
+      throw new Error('incorrect email or password');
     }
 
     return user;
@@ -51,7 +51,7 @@ const providers = [
         user = await getUserFromDb(credentials);
         return user;
       } catch (e) {
-        if (e.name === "MongoServerSelectionError") {
+        if (e.name === 'MongoServerSelectionError') {
           throw e;
         }
         // if the error is mongo server selection, then the next auth login, should see it as a callback error, and
@@ -72,7 +72,7 @@ const providers = [
 export const providerMap = providers.reduce((prev, provider, i) => {
   const newArray = [...prev];
 
-  if (provider.id !== "credentials") {
+  if (provider.id !== 'credentials') {
     const providerDetail = {
       id: provider.id,
       name: provider.name,
@@ -97,29 +97,11 @@ export const myNextAuthOptions = {
       const checkUser = await User.findOne({ email });
 
       if (!checkUser) {
-        console.log("no user");
+        console.log('no user');
       }
 
       return isLoggedIn;
     },
-
-    //////DO NOT DELETE VERYI IMPORTANT, DO NOT DELETE, IT IS PASSED FROM AUTH CONFIG!!!
-
-    // async jwt({ token, user }) {
-    //   if (user) {
-    //     token.id = user.id;
-    //     token.role = user.role;
-    //   }
-    //   return token;
-    // },
-
-    // async session({ session, token }) {
-    //   if (token) {
-    //     session.id = token.id;
-    //     session.role = token.role;
-    //   }
-    //   return session;
-    // },
 
     ...authConfig.callbacks,
   },

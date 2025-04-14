@@ -13,13 +13,9 @@ import Image from 'next/image';
 import { HiOutlineChevronDoubleRight } from 'react-icons/hi2';
 import { HiOutlineChevronDoubleLeft } from 'react-icons/hi2';
 import { useCallback } from 'react';
+import HeroText from '../Hero/HeroText/HeroText';
 
-const CarouselApi2 = ({
-  imgObjs,
-  fixSize = 'bigWidth',
-  chevron = true,
-  checkPad = false,
-}) => {
+const CarouselApi2 = ({ imgObjs, fixSize = 'bigWidth', chevron = true }) => {
   const [tracker, setTracker] = useState(0);
   const counterRef = useRef();
   const carouselRef = useRef();
@@ -96,9 +92,7 @@ const CarouselApi2 = ({
     // element
     return (
       <div
-        className={`${styles.imageWrapper} ${styles[fixSize]} ${
-          checkPad && styles.wrapperMargin
-        }`}
+        className={`${styles.itemContainer} ${styles[fixSize]}`}
         style={inStyle}
         key={index}
         id="used"
@@ -106,13 +100,10 @@ const CarouselApi2 = ({
         calcindex={currentIndex}
         onTransitionEnd={handleTransitionEnd}
       >
-        <Image
-          className={styles.img}
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-        />
+        <HeroText />
+        <div className={`${styles.imageWrapper}`}>
+          <Image className={styles.img} src={img.src} alt={img.alt} fill />
+        </div>
       </div>
     );
   });
@@ -150,16 +141,18 @@ const CarouselApi2 = ({
 
       {/* back duplicate */}
       <div
-        className={`${styles.imageWrapper} ${styles[fixSize]}`}
+        className={`${styles.itemContainer} ${styles[fixSize]}`}
         style={inStyleLast}
       >
-        <Image
-          className={styles.img}
-          src={imgObjs[imgObjs.length - 1].src}
-          alt={'my alt'}
-          width={500}
-          height={500}
-        />
+        <HeroText />
+        <div className={`${styles.imageWrapper}`}>
+          <Image
+            className={styles.img}
+            src={imgObjs[imgObjs.length - 1].src}
+            alt={'my alt'}
+            fill
+          />
+        </div>
       </div>
     </div>
   );

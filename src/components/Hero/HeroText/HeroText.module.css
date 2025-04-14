@@ -1,0 +1,30 @@
+.container {
+  width: 23%;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 15%;
+  transform: translate(0, -50%);
+}
+
+.container h4 {
+  font-weight: 500;
+  margin-bottom: 1.6rem;
+  font-size: var(--font-medium);
+}
+
+.container h2 {
+  letter-spacing: 2px;
+  font-weight: 600;
+  line-height: 1.3;
+  font-size: var(--font-primary-header);
+  margin-bottom: 1.6rem;
+}
+.button {
+  background-color: var(--color-secondary-light);
+  padding: var(--padding-primary);
+  border: none;
+  border-radius: var(--radius-primary);
+  font-size: var(--font-primary);
+  color: white;
+}

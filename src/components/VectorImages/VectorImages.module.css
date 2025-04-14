@@ -1,5 +1,114 @@
-.container {
+/* section container */
+.parentContainer {
   width: 100%;
-  height: 32rem;
-  padding-top: 12rem;
+  height: 21.6rem;
+}
+
+/* carousel container */
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* containern to put marging */
+.detailContainer {
+  position: absolute;
+  height: 100%;
+  width: 21.6rem;
+  border: 2rem solid var(--color-background);
+}
+
+/* .detailContainer:nth-of-type(-n + 7) {
+  border: 4rem solid var(--color-background);
+} */
+
+/* image wrapper */
+
+.imageWrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid red;
+}
+
+.imageWrapper::after {
+  position: absolute;
+  content: 'food';
+  color: brown;
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  scale: 0;
+  transition: all 0.2s;
+  border-radius: 50%;
+}
+
+.imageWrapper:hover::after {
+  scale: 1;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.chevronContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.chevronContainer p {
+  color: var(--color-white-brand);
+  background-color: var(--color-secondary-light);
+  padding: 4px 4px;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s;
+}
+.chevronContainer p:hover {
+  border: 2px solid var(--color-secondary-light);
+  background: none;
+  color: var(--color-secondary-light);
+}
+
+/* special case */
+
+@media only screen and (max-width: 75em) {
+  .smallWidth {
+    width: 50%;
+  }
+  /* … */
+}
+
+@media only screen and (max-width: 65em) {
+  /* … */
+}
+@media only screen and (max-width: 52em) {
+  .smallWidth {
+    width: 100%;
+  }
+  /* … */
+}
+@media only screen and (max-width: 32em) {
+  /* … */
+}
+@media only screen and (max-width: 22em) {
+  /* … */
 }

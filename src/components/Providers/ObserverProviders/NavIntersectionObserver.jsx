@@ -1,10 +1,10 @@
-"use client";
+'use client';
 // with intersection obsever you check if the threshhold percentage of the target is in or out of the root i.e
 //target ia inside the parent container upto to an amount or point that is at least equal or greater than the stated threshold, when it runs.
 // if the % is in, intersection is true, if it is not , intersection is false. and call back is trigerred each time
 // when the % mark is reached
-import React, { useRef, useEffect, useState } from "react";
-import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
+import React, { useEffect } from 'react';
+import { useStyleSlice } from '@/lib/hooks/useStyleSlice';
 
 const NavIntersectionObserver = ({
   children,
@@ -22,12 +22,10 @@ const NavIntersectionObserver = ({
 
     const observeEvent = () => {
       const target = theRef?.current;
-      const nav = document.querySelector("#nav");
+      const nav = document.querySelector('#nav');
       myTarget = target;
-
       //
 
-      // const navClientHeight = nav?.getBoundingClientRect().height;
       const halfHeroHeight = target?.getBoundingClientRect().height / 3;
       const myMargin = rootMargin || -halfHeroHeight;
 
@@ -36,7 +34,6 @@ const NavIntersectionObserver = ({
         root: null,
         rootMargin: `${myMargin}px`,
         threshold: threshold || 0,
-        // rootMargin: "0px",
       };
       // callback
       const observerCallback = (entry, observer) => {

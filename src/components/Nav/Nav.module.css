@@ -2,35 +2,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* grid-column: full-start/full-end; 
-   padding: 0rem 8rem;*/
   grid-column: cont-start / cont-end;
-
   height: 12rem;
   z-index: 1;
-
-  /* background-color: var(--color-white-brand); */
-
-  /* border-bottom: 1px solid var(--color-background-1); */
-  font-size: var(--font-header);
+  position: relative;
+  transition: position 0.5s;
 }
 
 .leftSide,
 .rightSide {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 .cartContainer {
   position: relative;
+  transition: all 0.5s;
 }
 
 .sticky {
   position: fixed;
-  left: 0;
-  padding: 0 20rem;
+  padding: 0 12rem;
   width: 100%;
+  left: 0;
+  top: 0;
   background-color: var(--color-white-brand);
   border-bottom: 1px solid var(--color-background-1);
+  z-index: 1;
 }
 
 @media only screen and (max-width: 65em) {
@@ -38,6 +36,7 @@
 }
 @media only screen and (max-width: 52em) {
   .container {
+    grid-column: full-start / full-end;
     padding: 2rem 4rem;
     font-size: 2rem;
   }

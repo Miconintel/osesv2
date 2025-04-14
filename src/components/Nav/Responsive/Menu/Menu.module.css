@@ -11,7 +11,8 @@
     text-decoration: line-through;
   }
   .iconContainer {
-    display: block;
+    display: flex;
+    align-items: center;
   }
   /* … */
 }

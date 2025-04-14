@@ -1,42 +1,37 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import Link from "next/link";
-import styles from "./NavLinks.module.css";
-import logoutAction from "@/lib/actions/logoutAction";
-import { usePathname } from "next/navigation";
-import { IoCartOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
-import { getTotalQuantity } from "@/lib/redux/stateSlices/cartSlice";
-import Cart from "@/components/Cart/Cart";
+import React from 'react';
+import Link from 'next/link';
+import styles from './NavLinks.module.css';
+import logoutAction from '@/lib/actions/logoutAction';
+import { usePathname } from 'next/navigation';
 
 const NavLinks = ({ session }) => {
   const pathname = usePathname();
-  const totalCartQuantiy = useSelector(getTotalQuantity);
 
   // imported
-  const isAdmin = session?.role === "admin";
+  const isAdmin = session?.role === 'admin';
 
   // jsx
   return (
     <ul className={styles.list}>
-      <li>
-        <Link href="/" className={pathname === "/" ? styles.action : ""}>
+      <li className={styles.listItem}>
+        <Link href="/" className={pathname === '/' ? styles.action : ''}>
           Home
         </Link>
       </li>
-      <li>
+      <li className={styles.listItem}>
         <Link
           href="/products"
-          className={pathname === "/products" ? styles.action : ""}
+          className={pathname === '/products' ? styles.action : ''}
         >
           Products
         </Link>
       </li>
-      <li>
+      <li className={styles.listItem}>
         <Link
           href="/contact"
-          className={pathname === "/contact" ? styles.action : ""}
+          className={pathname === '/contact' ? styles.action : ''}
         >
           Contact
         </Link>
@@ -44,28 +39,25 @@ const NavLinks = ({ session }) => {
       {session?.user ? (
         <>
           {isAdmin && (
-            <li>
+            <li className={styles.listItem}>
               <Link
                 href="/admin"
-                className={pathname === "/admin" ? styles.action : ""}
+                className={pathname === '/admin' ? styles.action : ''}
               >
                 Admin
               </Link>
             </li>
           )}
-          <li>
+          <li className={styles.listItem}>
             <form action={logoutAction}>
               <button className={styles.logout}>Logout</button>
             </form>
           </li>
         </>
       ) : (
-        <li className={styles.shop}>
-          <Link
-            href="/login"
-            className={pathname === "/login" ? styles.action : ""}
-          >
-            Shop Now
+        <li className={styles.listItem}>
+          <Link href="/login" className={styles.cta}>
+            shop now
           </Link>
         </li>
       )}

@@ -1,16 +1,19 @@
-import { configureStore } from "@reduxjs/toolkit";
-import menuReducer from "./stateSlices/menuSlice";
-import styleReducer from "./stateSlices/styleSlice";
-import cartReducer from "./stateSlices/cartSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from '@reduxjs/toolkit';
 
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
-import { combineReducers } from "@reduxjs/toolkit";
+// for persistore
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
+// mine
+import menuReducer from './stateSlices/menuSlice';
+import styleReducer from './stateSlices/styleSlice';
+import cartReducer from './stateSlices/cartSlice';
 
 // create config for the persisted reducer
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
 };
 
@@ -43,7 +46,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
       },
     }),
 });

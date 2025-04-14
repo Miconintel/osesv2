@@ -7,34 +7,50 @@
 
 .list li {
   font-size: var(--font-primary);
-  color: var(--color-primary);
 }
 
-.list a {
+/* .list a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 a.action,
 .list a:hover {
-  /* padding: 1.2rem 1.2rem;
-  border: none;
-  border-radius: var(--radius-primary); 
-  background-color: var(--color-primary);  */
-
-  /* because color property is clashing for the same selection ,I chained the element selector
+   because color property is clashing for the same selection ,I chained the element selector
   a with th class selector
+  
+  color: var(--color-secondary);
+} */
+
+.list a:link,
+.list a:visited {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.listItem a.action,
+.list a:hover,
+.list a:active {
+  /* this selects both hover and the active link */
+  /*because the action class link will have a lesser specificity with the link:link style, I used the chain to increase the specificity
+
+  in addition assuming the pseudo selectors like :visited and co is not added to the link, then using a second parent class before the chain wont be necessary
   */
   color: var(--color-secondary);
 }
 
-.shop a {
-  border: none;
+.listItem a.cta {
   border-radius: var(--radius-primary);
-  background-color: var(--color-primary);
-  padding: 1.2rem 1.2rem;
-  color: white;
+  background-color: var(--color-primary-light);
+  padding: var(--padding-secondary);
+  color: var(--color-white-brand);
+}
+.listItem a.cta:hover {
+  color: var(--color-secondary);
 }
 
 .logout {
@@ -43,6 +59,7 @@ a.action,
   background: none;
   font-size: inherit;
   cursor: pointer;
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 65em) {

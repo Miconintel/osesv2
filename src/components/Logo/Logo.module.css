@@ -1,8 +1,9 @@
 .logo {
-  font-size: inherit;
-  font-weight: bold;
+  font-size: var(--font-header);
   text-transform: uppercase;
   text-decoration: none;
   z-index: 1;
+  /* you have to explicitly inherit the color */
   color: inherit;
+  font-weight: 700;
 }

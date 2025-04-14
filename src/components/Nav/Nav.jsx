@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
-import NavLinks from "./NavLinks/NavLinks";
-import styles from "./Nav.module.css";
-import Responsive from "./Responsive/Responsive";
-import Logo from "../Logo/Logo";
-import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
-import Cart from "../Cart/Cart";
+'use client';
+import React from 'react';
+import NavLinks from './NavLinks/NavLinks';
+import styles from './Nav.module.css';
+import Responsive from './Responsive/Responsive';
+import Logo from '../Logo/Logo';
+import { useStyleSlice } from '@/lib/hooks/useStyleSlice';
+import Cart from '../Cart/Cart';
 
 // import NavIntersectionObserver from "../Providers/ObserverProviders/NavIntersectionObserver";
 // import { useStyleSlice } from "@/lib/hooks/useStyleSlice";
@@ -17,9 +17,12 @@ const Nav = ({ session }) => {
   const { state, actions, dispatch } = useStyleSlice();
   const { fixed } = state;
 
+  // to achieve the second nav, you will have to create a nav clone.
   return (
     <nav
-      className={`${styles.container} ${fixed ? styles.sticky : ""} `}
+      className={`${styles.container} ${
+        fixed ? styles.sticky : styles.hidden
+      } `}
       id="nav"
     >
       <div className={styles.leftSide}>
