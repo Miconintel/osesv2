@@ -1,7 +1,7 @@
 /* section container */
 .parentContainer {
   width: 100%;
-  height: 21.6rem;
+  height: 25rem;
 }
 
 /* carousel container */
@@ -17,25 +17,27 @@
   position: absolute;
   height: 100%;
   width: 21.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* create a margin effect */
   border: 2rem solid var(--color-background);
+  /* background-color: aqua; */
+  overflow: hidden;
 }
-
-/* .detailContainer:nth-of-type(-n + 7) {
-  border: 4rem solid var(--color-background);
-} */
-
-/* image wrapper */
 
 .imageWrapper {
   position: relative;
-  height: 100%;
+  height: 80%;
   width: 100%;
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid red;
+  margin-bottom: 1rem;
+  border: 0.1px solid var(--color-background-2);
 }
 
-.imageWrapper::after {
+/* .imageWrapper::after {
   position: absolute;
   content: 'food';
   color: brown;
@@ -53,10 +55,14 @@
 
 .imageWrapper:hover::after {
   scale: 1;
-}
+} */
 
 .img {
   object-fit: cover;
+  /* this is the natural way to do it, after specifying the image size, if it is known, then you adjust the widht and height to 100% but if image size is not known
+  using fill and just setting object fit to cover, does the job and keep aspect ratio */
+  /* height: 100%;
+  width: 100%; */
 }
 
 .chevronContainer {
@@ -101,9 +107,6 @@
   /* … */
 }
 @media only screen and (max-width: 52em) {
-  .smallWidth {
-    width: 100%;
-  }
   /* … */
 }
 @media only screen and (max-width: 32em) {

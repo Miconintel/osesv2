@@ -9,36 +9,28 @@
   height: 36rem;
 }
 
-.content {
+/* .content {
   overflow: hidden;
-}
-
-.content span {
-  position: absolute;
-  z-index: 1;
-}
-
-/* .left {
-  background-color: yellow;
-}
-
-.left span:hover {
-  color: red;
-} */
-
-/*  */
-
-/* .right {
-  background-color: green;
+  position: relative;
 } */
 
 .imageContainer {
+  overflow: hidden;
+  position: relative;
   height: 100%;
   width: 100%;
   position: relative;
-  transition: all 0.4s;
+  /* transition: all 0.4s; */
 }
 
-.imageContainer:hover {
+/* .imageContainer:hover {
   scale: 1.1;
+} */
+
+.img {
+  transition: all 0.4s ease-in-out;
+}
+
+.img:hover {
+  transform: scale(1.1);
 }

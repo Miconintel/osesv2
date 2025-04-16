@@ -155,7 +155,7 @@ const Trending = () => {
         calcindex={currentIndex}
         onTransitionEnd={handleTransitionEnd}
       >
-        <div className={`${styles.imageWrapper} }`}>
+        {/* <div className={`${styles.imageWrapper} }`}>
           <Image
             className={styles.img}
             src={img.src}
@@ -163,6 +163,9 @@ const Trending = () => {
             width={img.width}
             height={img.height}
           />
+        </div> */}
+        <div className={`${styles.imageWrapper} }`}>
+          <Image className={styles.img} src={img.src} alt={img.alt} fill />
         </div>
         <div>word of the wise</div>
       </div>
@@ -201,13 +204,21 @@ const Trending = () => {
 
         {/* back duplicate */}
         <div className={styles.detailContainer} style={inStyleLast}>
-          <div className={`${styles.imageWrapper} `}>
+          {/* <div className={`${styles.imageWrapper} `}>
             <Image
               className={styles.img}
               src={imgObjs[imgObjs.length - 1].src}
               alt={'my alt'}
               width={500}
               height={500}
+            />
+          </div> */}
+          <div className={`${styles.imageWrapper} `}>
+            <Image
+              className={styles.img}
+              src={imgObjs[imgObjs.length - 1].src}
+              alt={'my alt'}
+              fill
             />
           </div>
           <div>word of the wise</div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ClassificationSection.module.css';
 import Image from 'next/image';
+import ClassificationText from './ClassificationText/ClassificationText';
 
 const ClassificationSection = () => {
   return (
@@ -8,12 +9,24 @@ const ClassificationSection = () => {
       <div className={styles.gridContainer}>
         <div className={styles.content}>
           <div className={styles.imageContainer}>
-            <Image src="/hero-1.jpg" alt="this image" fill={true} />
+            <ClassificationText />
+            <Image
+              src="/hero-1.jpg"
+              alt="this image"
+              fill={true}
+              className={styles.img}
+            />
           </div>
         </div>
         <div className={styles.content}>
           <div className={styles.imageContainer}>
-            <Image src="/hero-1.jpg" alt="this image" fill />
+            <ClassificationText />
+            <Image
+              src="/hero-1.jpg"
+              alt="this image"
+              fill
+              className={styles.img}
+            />
           </div>
         </div>
       </div>

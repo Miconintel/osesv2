@@ -10,66 +10,77 @@ const imgObjs = [
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
   {
     src: '/hero-1.jpg',
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
 
   {
@@ -77,6 +88,7 @@ const imgObjs = [
     alt: 'image of groceries on bag',
     width: 500,
     height: 500,
+    text: 'word',
   },
 ];
 
@@ -132,18 +144,18 @@ const VectorImages = ({}) => {
     [tracker]
   );
 
-  // useEffect(
-  //   function () {
-  //     counterRef.current = setInterval(() => {
-  //       handleForward();
-  //     }, 5000);
+  useEffect(
+    function () {
+      counterRef.current = setInterval(() => {
+        handleForward();
+      }, 5000);
 
-  //     return () => {
-  //       clearInterval(counterRef.current);
-  //     };
-  //   },
-  //   [tracker, handleForward]
-  // );
+      return () => {
+        clearInterval(counterRef.current);
+      };
+    },
+    [tracker, handleForward]
+  );
 
   const handleTransitionEnd = (e) => {
     if (tracker === imgObjs.length / 2) {
@@ -197,6 +209,18 @@ const VectorImages = ({}) => {
         <div className={`${styles.imageWrapper}`}>
           <Image className={styles.img} src={img.src} alt={img.alt} fill />
         </div>
+        <p>{img.text}</p>
+        {/* <div className={`${styles.imageWrapper}`}>
+          <Image
+            className={styles.img}
+            src={img.src}
+            alt={img.alt}
+            height={500}
+            width={500}
+          />
+        </div> */}
+        {/* 
+        <Image src={img.src} alt={img.alt} height={170} width={170} /> */}
       </div>
     );
   });
@@ -233,6 +257,14 @@ const VectorImages = ({}) => {
 
         {/* back duplicate */}
         <div className={styles.detailContainer} style={inStyleLast}>
+          {/* <Image
+            src={imgObjs[imgObjs.length - 1].src}
+            alt={'my alt'}
+            // fill
+            height={40}
+            width={40}
+          /> */}
+
           <div className={`${styles.imageWrapper}`}>
             <Image
               className={styles.img}
@@ -241,6 +273,7 @@ const VectorImages = ({}) => {
               fill
             />
           </div>
+          <p>{imgObjs[imgObjs.length - 1].text}</p>
         </div>
       </div>
     </div>
