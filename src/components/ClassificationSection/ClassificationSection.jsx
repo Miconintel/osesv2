@@ -9,7 +9,7 @@ const ClassificationSection = () => {
       <div className={styles.gridContainer}>
         <div className={styles.content}>
           <div className={styles.imageContainer}>
-            <ClassificationText />
+            {/* <ClassificationText /> */}
             <Image
               src="/hero-1.jpg"
               alt="this image"
@@ -17,10 +17,11 @@ const ClassificationSection = () => {
               className={styles.img}
             />
           </div>
+          <ClassificationText />
         </div>
         <div className={styles.content}>
           <div className={styles.imageContainer}>
-            <ClassificationText />
+            {/* <ClassificationText /> */}
             <Image
               src="/hero-1.jpg"
               alt="this image"
@@ -28,6 +29,7 @@ const ClassificationSection = () => {
               className={styles.img}
             />
           </div>
+          <ClassificationText />
         </div>
       </div>
     </div>

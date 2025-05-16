@@ -1,7 +1,7 @@
-import React from "react";
-import Image from "next/image";
-import styles from "./DetailImage.module.css";
-import { getBlobImage } from "@/lib/utilities/blob";
+import React from 'react';
+import Image from 'next/image';
+import styles from './DetailImage.module.css';
+
 //
 //
 //
@@ -12,7 +12,7 @@ const DetailImage = async ({ image }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <Image src={image || "/images/placeholder.jpg"} fill alt="product" />
+        <Image src={image || '/images/placeholder.jpg'} fill alt="product" />
       </div>
     </div>
   );
