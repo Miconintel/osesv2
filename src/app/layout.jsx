@@ -5,7 +5,7 @@ import Footer from '@/components/Footer/Footer';
 import StoreProvider from '@/components/Providers/StoreProvider/StoreProvider';
 import LoginProviders from '@/components/Providers/LoginProviders/LoginProviders';
 import { Poppins } from 'next/font/google';
-// const inter = Poppins({ subsets: ["latin"], weight: "100 900" });
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
