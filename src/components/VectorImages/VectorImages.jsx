@@ -1,9 +1,5 @@
 'use client';
 
-// import React from 'react';
-// import CarouselApi2 from '../CarouselApi2/CarouselApi2';
-// import styles from './VectorImages.module.css';
-
 const imgObjs = [
   {
     src: '/hero-1.jpg',
@@ -92,27 +88,6 @@ const imgObjs = [
   },
 ];
 
-// const VectorImages = () => {
-//   return (
-//     <div className={styles.container}>
-//       <CarouselApi2
-//         imgObjs={imgObj}
-//         fixSize="smallWidth"
-//         chevron={false}
-//         checkPad={true}
-//       />
-//     </div>
-//   );
-// };
-
-// export default VectorImages;
-
-// after the last item from the arrays of images moves out of the screen, the duplicate
-// item should move in, so that the carousel image can return to the first positions by updating the
-// the tracker state using the on transition end event listener
-// as soon as the even listener is triggered, the transition is removed on all the images and tracker updated
-// also causing the duplicate images to return back to their original position.
-// while the duplicate images return back to its original postion, the transition of the duplicate images is removed too.
 // this is an improved carousel  component
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './VectorImages.module.css';
@@ -210,17 +185,6 @@ const VectorImages = ({}) => {
           <Image className={styles.img} src={img.src} alt={img.alt} fill />
         </div>
         <p>{img.text}</p>
-        {/* <div className={`${styles.imageWrapper}`}>
-          <Image
-            className={styles.img}
-            src={img.src}
-            alt={img.alt}
-            height={500}
-            width={500}
-          />
-        </div> */}
-        {/* 
-        <Image src={img.src} alt={img.alt} height={170} width={170} /> */}
       </div>
     );
   });
@@ -257,14 +221,6 @@ const VectorImages = ({}) => {
 
         {/* back duplicate */}
         <div className={styles.detailContainer} style={inStyleLast}>
-          {/* <Image
-            src={imgObjs[imgObjs.length - 1].src}
-            alt={'my alt'}
-            // fill
-            height={40}
-            width={40}
-          /> */}
-
           <div className={`${styles.imageWrapper}`}>
             <Image
               className={styles.img}

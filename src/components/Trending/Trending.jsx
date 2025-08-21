@@ -7,16 +7,6 @@ import { HiOutlineChevronDoubleRight } from 'react-icons/hi2';
 import { HiOutlineChevronDoubleLeft } from 'react-icons/hi2';
 import { useCallback } from 'react';
 
-//
-// ////////////////
-// after the last item from the arrays of images moves out of the screen, the duplicate
-// item should move in, so that the carousel image can return to the first positions by updating the
-// the tracker state using the on transition end event listener
-// as soon as the even listener is triggered, the transition is removed on all the images and tracker updated
-// also causing the duplicate images to return back to their original position.
-// while the duplicate images return back to its original postion, the transition of the duplicate images is removed too.
-// this is an improved carousel  component
-
 const imgObjs = [
   {
     src: '/hero-1.jpg',

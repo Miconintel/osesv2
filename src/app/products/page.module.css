@@ -10,18 +10,26 @@
   gap: 4rem; */
 }
 
+@media only screen and (max-width: 74em) {
+  /* standard is 64em or 62 */
+  /* … */
+}
+
 @media only screen and (max-width: 65em) {
+  /* standard is 64em or 62 */
   /* … */
 }
 @media only screen and (max-width: 52em) {
+  /* standard is 48em */
   .container {
     padding: 4rem 0;
   }
   /* … */
 }
-@media only screen and (max-width: 32em) {
+@media only screen and (max-width: 36em) {
   /* … */
 }
+/* irrelevant old phones */
 @media only screen and (max-width: 22em) {
   /* … */
 }

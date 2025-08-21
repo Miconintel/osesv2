@@ -4,35 +4,36 @@
 // as soon as the even listener is triggered, the transition is removed on all the images and tracker updated
 // also causing the duplicate images to return back to their original position.
 // while the duplicate images return back to its original postion, the transition of the duplicate images is removed too.
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./CarouselApi.module.css";
-import Image from "next/image";
-import { HiOutlineChevronDoubleRight } from "react-icons/hi2";
-import { HiOutlineChevronDoubleLeft } from "react-icons/hi2";
-import { useCallback } from "react";
+/////////////
+import React, { useEffect, useRef, useState } from 'react';
+import styles from './CarouselApi.module.css';
+import Image from 'next/image';
+import { HiOutlineChevronDoubleRight } from 'react-icons/hi2';
+import { HiOutlineChevronDoubleLeft } from 'react-icons/hi2';
+import { useCallback } from 'react';
 
 const imgObj = [
   {
-    src: "/hero-1.jpg",
-    alt: "image of groceries on bag",
+    src: '/hero-1.jpg',
+    alt: 'image of groceries on bag',
     width: 500,
     height: 500,
   },
   {
-    src: "/hero-2.jpg",
-    alt: "image of groceries on bag",
+    src: '/hero-2.jpg',
+    alt: 'image of groceries on bag',
     width: 500,
     height: 500,
   },
   {
-    src: "/hero-3.jpg",
-    alt: "image of groceries on bag",
+    src: '/hero-3.jpg',
+    alt: 'image of groceries on bag',
     width: 500,
     height: 500,
   },
 ];
 
-const imgObj2 = ["/hero-1.jpg", "/hero-2.jpg", "/hero-3.jpg"];
+const imgObj2 = ['/hero-1.jpg', '/hero-2.jpg', '/hero-3.jpg'];
 
 const CarouselApi = ({ refm }) => {
   const [tracker, setTracker] = useState(0);
@@ -42,16 +43,10 @@ const CarouselApi = ({ refm }) => {
     function handleForward() {
       clearInterval(counterRef.current);
       const moveForward = tracker < imgObj.length;
-
-      // if (moveForward) {
-      //   setTracker((tracker) => tracker + 1);
-      // } else {
-      //   setTracker(1);
-      // }
       if (moveForward) {
-        const elements = [...refm?.current.querySelectorAll("#used")];
+        const elements = [...refm?.current.querySelectorAll('#used')];
         elements.forEach((el) => {
-          el.style.transition = "all 0.4s ease-in";
+          el.style.transition = 'all 0.4s ease-in';
         });
         setTracker((tracker) => tracker + 1);
       }
@@ -62,12 +57,6 @@ const CarouselApi = ({ refm }) => {
   useEffect(
     function () {
       counterRef.current = setInterval(() => {
-        // const moveForward = tracker < imgObj.length - 1;
-        // if (moveForward) {
-        //   setTracker((tracker) => tracker + 1);
-        // } else {
-        //   setTracker(0);
-        // }
         handleForward();
       }, 5000);
 
@@ -80,17 +69,16 @@ const CarouselApi = ({ refm }) => {
 
   const handleTransitionEnd = (e) => {
     if (tracker === imgObj.length) {
-      // const element = e.target;
-      const elements = [...refm?.current.querySelectorAll("#used")];
+      const elements = [...refm?.current.querySelectorAll('#used')];
       elements.forEach((el) => {
-        el.style.transition = "none";
+        el.style.transition = 'none';
       });
 
       setTracker(0);
     } else if (tracker === -1) {
-      const elements = [...refm?.current.querySelectorAll("#used")];
+      const elements = [...refm?.current.querySelectorAll('#used')];
       elements.forEach((el) => {
-        el.style.transition = "none";
+        el.style.transition = 'none';
       });
       setTracker(imgObj.length - 1);
     }
@@ -105,33 +93,20 @@ const CarouselApi = ({ refm }) => {
     clearInterval(counterRef.current);
     const moveBackward = tracker > -1;
     if (moveBackward) {
-      const elements = [...refm?.current.querySelectorAll("#used")];
+      const elements = [...refm?.current.querySelectorAll('#used')];
       elements.forEach((el) => {
-        el.style.transition = "all 0.4s ease-in";
+        el.style.transition = 'all 0.4s ease-in';
       });
       setTracker((tracker) => tracker - 1);
     }
-    // if (moveBackward) {
-    //   setTracker((tracker) => tracker - 1);
-    // } else {
-    //   setTracker(imgObj.length - 1);
-    // }
   };
 
   //   generator
 
   const images = imgObj.map((img, index) => {
     const currentIndex = index - tracker;
-    // const lastIndex = tracker === imgObj.length - 1;
-    // const firstIndex = tracker === 0;
-
-    // generateTransiton
-
-    // const theTransition = tracker === 0 ? "none" : "all 0.4s ease-in";
-
     const inStyle = {
       transform: `translateX(${currentIndex * 100}%)`,
-      // transition: "all 0.4s ease-in",
     };
 
     // element
@@ -164,7 +139,7 @@ const CarouselApi = ({ refm }) => {
   // calculate transition
 
   const transitionAction =
-    tracker == imgObj.length ? "all 0.4s ease-in" : "none";
+    tracker == imgObj.length ? 'all 0.4s ease-in' : 'none';
 
   const inStyle = {
     transform: `translateX(${theTransform}%)`,
@@ -177,7 +152,7 @@ const CarouselApi = ({ refm }) => {
 
   // calculate transition
 
-  const transitionActionLast = tracker == -1 ? "all 0.4s ease-in" : "none";
+  const transitionActionLast = tracker == -1 ? 'all 0.4s ease-in' : 'none';
 
   const inStyleLast = {
     transform: `translateX(${theTransformLast}%)`,
@@ -202,7 +177,7 @@ const CarouselApi = ({ refm }) => {
         <Image
           className={styles.img}
           src={imgObj[0].src}
-          alt={"my alt"}
+          alt={'my alt'}
           width={500}
           height={500}
         />
@@ -212,7 +187,7 @@ const CarouselApi = ({ refm }) => {
         <Image
           className={styles.img}
           src={imgObj[imgObj.length - 1].src}
-          alt={"my alt"}
+          alt={'my alt'}
           width={500}
           height={500}
         />
